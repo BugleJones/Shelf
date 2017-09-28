@@ -1,4 +1,4 @@
-let userData = [
+const userData = [
   {
     first_name: 'Alice',
     last_name: 'Murphy',
@@ -41,19 +41,39 @@ let userData = [
   }
 ];
 
-const weLikeLikes = [
+const userLikes = [
   {
     username: 'CharlieDontSurf',
     res_title: 'String Theory',
     count: 9001,
   },
-];
-
-const weHasComments = [
   {
     username: 'YoBob',
     res_title: 'String Theory',
-    content: 'incroyable',
+    count: 1,
+  },
+  {
+    username: 'CharlieDontSurf',
+    res_title: 'The Art of Building Plastic Model Airplanes',
+    count: 1,
+  },
+];
+
+const userComments = [
+  {
+    username: 'YoBob',
+    res_title: 'String Theory',
+    content: 'Incroyable!',
+  },
+  {
+    username: 'MurphysLaw',
+    res_title: 'The Art of Building Plastic Model Airplanes',
+    content: 'Sorry, I prefer sports-betting exclusively',
+  },
+  {
+    username: 'MurphysLaw',
+    res_title: 'String Theory',
+    content: 'Sorry, I prefer sports-betting exclusively',
   },
 ];
 
@@ -88,19 +108,19 @@ const createResource = (knex, resource) => {
   return knex('resources').insert(resource);
 };
 
-const makeAuxilliary = (knex, likeThing, tableName, third_column) => {
-  let user_id;   // yes that's undefined.  only read inside .then callbacks!
-  return knex('users').select('id').where('username', likeThing.username)
+const makeAuxilliary = (knex, auxilliary, tableName, third_column) => {
+  let user_id;   // Only read inside .then callbacks
+  return knex('users').select('id').where('username', auxilliary.username)
   .then(user_ids => {
-    if (user_ids.length !== 1) { throw "why in the sam h*ck is this non-unique?"; }
-    user_id = user_ids[0].id; // write into enclosed wider-scope nonsense
-    return knex('resources').select('id').where('title', likeThing.res_title);
+    if (user_ids.length !== 1) { throw "Unable to complete function"; }
+    user_id = user_ids[0].id; // Write into enclosed wider-scope
+    return knex('resources').select('id').where('title', auxilliary.res_title);
   })
   .then(ids => {
-    if (ids.length !== 1) { throw "why in the sam h*ck is this non-unique?"; }
+    if (ids.length !== 1) { throw "Unable to complete function"; }
     return knex(tableName).insert({
-      [third_column]: likeThing[third_column],
-      user_id: user_id,   // more blasphemous reading of the enclosed variable
+      [third_column]: auxilliary[third_column],
+      user_id: user_id,   // Further reading of the enclosed variable
       resource_id: ids[0].id
     });
   })
@@ -116,11 +136,11 @@ exports.seed = (knex, Promise) => {
       return Promise.all(userPromises);
     })
     .then(() => {
-      let likerPromises = weLikeLikes.map(like => makeAuxilliary(knex, like, 'likes', 'count'));
-      return Promise.all(likerPromises);
+      let likePromises = userLikes.map(like => makeAuxilliary(knex, like, 'likes', 'count'));
+      return Promise.all(likePromises);
     })
     .then(() => {
-      let commentPromises = weHasComments.map(comment => makeAuxilliary(knex, comment, 'comments', 'content'));
+      let commentPromises = userComments.map(comment => makeAuxilliary(knex, comment, 'comments', 'content'));
       return Promise.all(commentPromises);
     })
 };
