@@ -2,14 +2,16 @@
 
 const express = require("express");
 const router = express.Router();
+const dm_fn = require('../lib/data-movers');
 
-module.exports = knex => {
-  router.get("/", (req, res) => {
-    knex
-      .select("first_name")
-      .from("users")
+module.exports = (knex) => {
+  const dm = dm_fn(knex);
+
+
+  router.get("/", (request, response) => {
+    dm.getAllUserFirstNames()
       .then(results => {
-        res.json(results);
+        response.json(results);
       });
   });
 
