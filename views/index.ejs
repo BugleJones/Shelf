@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>SHLF</title>
 
     <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
 
@@ -10,6 +10,104 @@
   </head>
 
   <body>
-    <h1 class="jumbotron">Hello World!</h1>
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <img class="logo" src="/images/SHLF.png" alt="SHLF">
+        <a class="navbar-brand brand-name" href="#">SHELF</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+        <button class="btn btn-outline-dark create-btn">+</button>
+      </nav>
+      <div class="wrapper">
+        <div class="container-fluid">
+          <div class="new-resource">
+            <h2>Create Resource</h2>
+            <form class="new-resource-form" action="/resources" method="post">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="new-resource-url" class="col-form-label">URL</label>
+                  <input type="url" class="form-control" id="new-resource-url" placeholder="https://">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="new-resource-title" class="col-form-label">Title</label>
+                  <input type="text" class="form-control" id="title" placeholder="Title">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="new-resource-description" class="col-form-label">Description</label>
+                <textarea type="textarea" class="form-control" id="new-resource-description" placeholder="This reource is about..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-outline-dark">Create</button>
+            </form>
+          </div>
+        </div>
+
+      <div class="container all-resources">
+        <div class="row">
+          <div class="card-columns">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">TITLE</h4>
+                <p class="card-text">This is a resource about liking a resource OVER 9000 times! Please smash that like button, otherwise my wife will beat me</p>
+                <a href="#">This is the URL</a>
+                <div class="card-footer">
+                  <span>Tag1</span>
+                  <span>Tag2</span>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">I HAVE A REALLY REALLY LONG TITLE</h4>
+                <p class="card-text">This is a reasource.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+            <div class="card text-center">
+              <div class="card-body">
+                <h4 class="card-title">Resource title</h4>
+                <p class="card-text">This is definitely not a resource, whatever anyone tells you, this is 1000% not a resource. It may look like a resource, smell like a resource, and taste like a resourece, but it's not!</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+            <div class="card p-3 text-right">
+              <blockquote class="blockquote mb-0">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                <footer class="blockquote-footer">
+                  <small class="text-muted">
+                    Someone famous in <cite title="Source Title">Source Title</cite>
+                  </small>
+                </footer>
+              </blockquote>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Resource title</h4>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

@@ -1,1 +1,30 @@
-@import "../node_modules/bootstrap/scss/bootstrap"
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+.logo {
+  width: 50px;
+  padding-right: 10px;
+}
+.navbar-brand {
+  font-size: 2em;
+}
+
+.new-resource {
+  background-color: #eee;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  margin: 2em auto;
+  padding: 10px;
+  display: none;
+}
+
+.create-btn {
+  margin: 0 5px;
+}
+.compose-toggle {
+  color: #fff;
+  background-color: #343a40;
+}
+
+.wrapper {
+  padding: 80px 0;
+}
