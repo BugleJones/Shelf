@@ -1,1 +1,45 @@
-@import "../node_modules/bootstrap/scss/bootstrap"
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+.logo {
+  width: 50px;
+  padding-right: 10px;
+}
+.navbar-brand {
+  font-size: 2em;
+}
+
+.create-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 50%;
+}
+.compose-toggle {
+  color: #fff;
+  background-color: #343a40;
+}
+
+.nav-active {
+  border-bottom: 2px solid #007bff;
+}
+
+.wrapper {
+  padding: 100px 0;
+  position: relative;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+}
+
+.like-btn {
+  border-radius: 50%;
+  background: none;
+  border: 1px solid #000;
+  margin-right: 5px;
+}
+
+.resource-actions {
+  flex-grow: 1;
+}

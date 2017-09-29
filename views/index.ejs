@@ -1,15 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>SHLF</title>
 
     <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
   <body>
-    <h1 class="jumbotron">Hello World!</h1>
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <a href="/"><img class="logo" src="/images/SHLF.png" alt="SHLF"></a>
+        <a class="navbar-brand brand-name" href="/">SHELF</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item mr-sm-2">
+              <a class="nav-link" href="#">My Resources <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item mr-sm-2">
+              <a class="nav-link" href="#">Liked Resources</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+
+      <div class="wrapper">
+
+      <div class="container">
+        <div class="row">
+          <div class="card-columns">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">TITLE</h4>
+                <p class="card-text">This is a resource about liking a resource OVER 9000 times! Please smash that like button, otherwise my wife will beat me</p>
+                <a href="#">This is the URL</a>
+              </div>
+              <div class="card-footer">
+                <div class="resource-actions">
+                  <button class="like-btn"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                </div>
+                <div class="resource-footer-tags">
+                  <a href="#" class="badge badge-dark">Physics</a>
+                  <a href="#" class="badge badge-secondary">Gambling</a>
+                  <a href="#" class="badge badge-info">Learning</a>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">TITLE</h4>
+                <p class="card-text">This is a resource about liking a resource OVER 9000 times! Please smash that like button, otherwise my wife will beat me</p>
+                <a href="#">This is the URL</a>
+              </div>
+              <div class="card-footer">
+                <div class="resource-actions">
+                  <button class="like-btn"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                </div>
+                <div class="resource-footer-tags">
+                  <a href="#" class="badge badge-dark">Physics</a>
+                  <a href="#" class="badge badge-secondary">Gambling</a>
+                  <a href="#" class="badge badge-info">Learning</a>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">TITLE</h4>
+                <p class="card-text">this is not a resource</p>
+                <a href="#">This is the URL</a>
+              </div>
+              <div class="card-footer">
+                <div class="resource-actions">
+                  <button class="like-btn"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                </div>
+                <div class="resource-footer-tags">
+                  <a href="#" class="badge badge-dark">Physics</a>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">TITLE</h4>
+                <p class="card-text">This is a resource about liking a resource OVER 9000 times! Please smash that like button, otherwise my wife will beat me this is a really long resource and the text seems to go on forever and ever and ever and ever and ever i should really stop, sorry guys </p>
+                <a href="#">This is the URL</a>
+              </div>
+              <div class="card-footer">
+                <div class="resource-actions">
+                  <button class="like-btn"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                </div>
+                <div class="resource-footer-tags">
+                  <a href="#" class="badge badge-dark">Physics</a>
+                  <a href="#" class="badge badge-secondary">Gambling</a>
+                  <a href="#" class="badge badge-info">Learning</a>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">TITLE</h4>
+                <p class="card-text">This is a resource about liking a resource OVER 9000 times! Please smash that like button, otherwise my wife will beat me</p>
+                <a href="#">This is the URL</a>
+              </div>
+              <div class="card-footer">
+                <div class="resource-actions">
+                  <button class="like-btn"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                </div>
+                <div class="resource-footer-tags">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="compose">
+        <button type="button" class="btn btn-outline-dark create-btn" data-toggle="modal" data-target="#composeModal">+</button>
+        <div class="modal fade" id="composeModal" tabindex="-1" role="dialog" aria-labelledby="composeModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="composeModalLabel">Create Resource</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="new-resource-form" action="/resources" method="post">
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="new-resource-url" class="col-form-label">URL</label>
+                      <input type="url" class="form-control" id="new-resource-url" placeholder="https://">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="new-resource-title" class="col-form-label">Title</label>
+                      <input type="text" class="form-control" id="title" placeholder="Title">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="new-resource-description" class="col-form-label">Description</label>
+                    <textarea type="textarea" class="form-control" id="new-resource-description" placeholder="This resource is about..."></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-outline-dark">Create</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
