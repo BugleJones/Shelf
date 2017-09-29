@@ -9,10 +9,7 @@ $(() => {
         .appendTo($("body"));
     }
   });
-  // $(".compose").on("click", "button", function() {
-  //   $(this).toggleClass("compose-toggle");
-  //   $(".new-resource").stop();
-  //   $(".new-resource").slideToggle("fast");
-  //   $("#new-resourece-url").focus();
-  // });
+  $(".nav-item").on("click", "a", function() {
+    $(this).toggleClass("nav-active");
+  });
 });
