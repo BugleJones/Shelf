@@ -9,7 +9,6 @@ const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const cookieSession = require("cookie-session");
 const app = express();
-const cookieSession = require('cookie-session');
 
 const knexConfig = require("./knexfile");
 const knex = require("knex")(knexConfig[ENV]);
