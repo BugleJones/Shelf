@@ -40,6 +40,13 @@
   margin-right: 5px;
 }
 
+.clicked-like {
+  content: "\f164";
+  color: #fff;
+  border: 1px solid #007bff;
+  background-color: #007bff;
+}
+
 .resource-actions {
   flex-grow: 1;
 }
@@ -51,6 +58,12 @@
 .comments {
   display: flex;
   align-items: center;
+}
+
+.resource-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .new-comment {

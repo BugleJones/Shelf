@@ -7,18 +7,10 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.3.1/js/tether.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
-
-  <!-- <div id="search_results">
-    <h1>Search Resources</h1>
-    <form id="search" method="GET" action="/api/search">
-    <input id="query" type="text" name="query">
-    <input type="submit" value="Search">
-    </form>
-  </div> -->
-
 
   <body>
       <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
@@ -61,10 +53,17 @@
           <h3>Login</h3>
           <form class="form-inline" action="/api/users/login" method="POST">
             <div class="form-group">
+<<<<<<< HEAD
               <input type="email" name="email" class="form-control mr-sm-2" id="login-email" placeholder="user@example.com">
             </div>
             <div class="form-group">
               <input type="password" name="password" class="form-control mr-sm-2" id="login-pass" placeholder="Password">
+=======
+              <input type="email" class="form-control mr-sm-2" name="email" id="login-email" placeholder="user@example.com">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control mr-sm-2" name="password" id="login-pass" placeholder="Password">
+>>>>>>> 027502fbb6d922eb6124ef5d49d18f14b0bb12a6
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
           </form>
@@ -72,12 +71,21 @@
 
         <div class="container register mb-4">
           <h3>Register</h3>
-          <form class="form-inline">
+          <form class="">
             <div class="form-group">
-              <input type="email" class="form-control mr-sm-2" id="register-email" placeholder="user@example.com">
+              <input type="text" class="form-control mr-sm-2" name="first_name" id="register-firt-name" placeholder="First Name">
             </div>
             <div class="form-group">
-              <input type="password" class="form-control mr-sm-2" id="register-pass" placeholder="Password">
+              <input type="text" class="form-control mr-sm-2" name="last_name" id="register-last-name" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control mr-sm-2" name="username" id="register-username" placeholder="username">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control mr-sm-2" name="email" id="register-email" placeholder="user@example.com">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control mr-sm-2" name="password" id="register-pass" placeholder="Password">
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
           </form>
@@ -89,15 +97,18 @@
       <div class="container all-resources">
         <div class="row">
           <div class="card-columns">
-            <div class="card" data-toggle="modal" data-target='#large-resource'>
-              <div class="card-body">
-                <h4 class="card-title">TITLE</h4>
+            <div class="card">
+              <div class="card-body" data-toggle="modal" data-target='#large-resource'>
+                <div class="resource-header">
+                  <h4 class="card-title">TITLE</h4>
+                  <p class="card-user-name">YoBoB</p>
+                </div>
                 <p class="card-text">This is a resource about liking a resource OVER 9000 times! Please smash that like button, otherwise my wife will beat me</p>
                 <a href="#">This is the URL</a>
               </div>
               <div class="card-footer resource-footer">
                 <div class="resource-actions">
-                  <button class="like-btn"><i class="fa fa-heart-o"></i></button>
+                  <button class="like-btn"><i class="fa fa-thumbs-o-up"></i></button>
                 </div>
                 <div class="resource-footer-tags">
                   <a href="#" class="badge badge-dark">Physics</a>
