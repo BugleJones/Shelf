@@ -5,11 +5,6 @@ const router = express.Router();
 const cookieSession = require('cookie-session');
 const datamovers_function = require("../lib/data-movers");
 
-app.use(cookieSession({
-  name: 'session',
-  keys: [process.env.SESSION_SECRET || 'development']
-}));
-
 module.exports = knex => {
   const datamovers = datamovers_function(knex);
 
@@ -42,7 +37,7 @@ module.exports = knex => {
       response.redirect("/")
     })
     .catch((error) => console.log(error));
-    }
+  });
 
   return router;
 };
