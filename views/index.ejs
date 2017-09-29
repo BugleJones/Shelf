@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
@@ -31,13 +32,13 @@
           </ul>
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
-        <button class="btn btn-outline-dark create-btn">+</button>
       </nav>
+
       <div class="wrapper">
-        <div class="container-fluid">
+        <div class="container">
           <div class="new-resource">
             <h2>Create Resource</h2>
             <form class="new-resource-form" action="/resources" method="post">
@@ -60,7 +61,7 @@
           </div>
         </div>
 
-      <div class="container all-resources">
+      <div class="container">
         <div class="row">
           <div class="card-columns">
             <div class="card">
@@ -68,41 +69,57 @@
                 <h4 class="card-title">TITLE</h4>
                 <p class="card-text">This is a resource about liking a resource OVER 9000 times! Please smash that like button, otherwise my wife will beat me</p>
                 <a href="#">This is the URL</a>
-                <div class="card-footer">
-                  <span>Tag1</span>
-                  <span>Tag2</span>
-                </div>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="badge badge-dark">Physics</a>
+                <a href="#" class="badge badge-secondary">Gambling</a>
+                <a href="#" class="badge badge-info">Learning</a>
               </div>
             </div>
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title">I HAVE A REALLY REALLY LONG TITLE</h4>
-                <p class="card-text">This is a reasource.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <h4 class="card-title">TITLE</h4>
+                <p class="card-text">This is a resource about liking a resource OVER 9000 times! Please smash that like button, otherwise my wife will beat me</p>
+                <a href="#">This is the URL</a>
               </div>
-            </div>
-            <div class="card text-center">
-              <div class="card-body">
-                <h4 class="card-title">Resource title</h4>
-                <p class="card-text">This is definitely not a resource, whatever anyone tells you, this is 1000% not a resource. It may look like a resource, smell like a resource, and taste like a resourece, but it's not!</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              <div class="card-footer">
+                <a href="#" class="badge badge-dark">Physics</a>
+                <a href="#" class="badge badge-secondary">Gambling</a>
+                <a href="#" class="badge badge-info">Learning</a>
               </div>
-            </div>
-            <div class="card p-3 text-right">
-              <blockquote class="blockquote mb-0">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <footer class="blockquote-footer">
-                  <small class="text-muted">
-                    Someone famous in <cite title="Source Title">Source Title</cite>
-                  </small>
-                </footer>
-              </blockquote>
             </div>
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Resource title</h4>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <h4 class="card-title">TITLE</h4>
+                <p class="card-text">this is not a resource, no matter what anyone tells you</p>
+                <a href="#">This is the URL</a>
+              </div>
+              <div class="card-footer">
+                <a href="#" class="badge badge-dark">Physics</a>
+                <a href="#" class="badge badge-secondary">Gambling</a>
+                <a href="#" class="badge badge-info">Learning</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="compose">
+        <button type="button" class="btn btn-outline-dark create-btn" data-toggle="modal" data-target="#exampleModal">+</button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>

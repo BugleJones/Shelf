@@ -9,10 +9,10 @@ $(() => {
         .appendTo($("body"));
     }
   });
-  $(".navbar").on("click", "button", function() {
-    $(this).toggleClass("compose-toggle");
-    $(".new-resource").stop();
-    $(".new-resource").slideToggle("fast");
-    $("#new-resourece-url").focus();
-  });
+  // $(".compose").on("click", "button", function() {
+  //   $(this).toggleClass("compose-toggle");
+  //   $(".new-resource").stop();
+  //   $(".new-resource").slideToggle("fast");
+  //   $("#new-resourece-url").focus();
+  // });
 });
