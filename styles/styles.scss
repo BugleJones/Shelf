@@ -28,7 +28,7 @@
   position: relative;
 }
 
-.card-footer {
+.resource-footer {
   display: flex;
   align-items: center;
 }
@@ -42,4 +42,22 @@
 
 .resource-actions {
   flex-grow: 1;
+}
+
+.modal-footer {
+  display: block;
+}
+
+.comments {
+  display: flex;
+  align-items: center;
+}
+
+.new-comment {
+  display: none;
+}
+
+.login,
+.register {
+  display: none;
 }
