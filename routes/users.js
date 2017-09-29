@@ -14,6 +14,11 @@ module.exports = knex => {
     });
   });
 
+  router.get('/logout', (request, response) => {
+    request.session.user_id = null;
+    response.redirect("/");
+  });
+
   router.post("/login", (request, response) => {
     let email = request.body.email;
     let password = request.body.password;
