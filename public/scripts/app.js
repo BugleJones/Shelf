@@ -9,4 +9,7 @@ $(() => {
         .appendTo($("body"));
     }
   });
+  $(".nav-item").on("click", "a", function() {
+    $(this).toggleClass("nav-active");
+  });
 });
