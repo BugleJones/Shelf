@@ -1,10 +1,12 @@
+const bcrypt = require("bcrypt");
+
 const userData = [
   {
     first_name: 'Alice',
     last_name: 'Murphy',
     email: 'alicemurphy@email.com',
     username: 'MurphysLaw',
-    password: 'murphy',
+    password: bcrypt.hashSync('murphy', 10),
     resources: [{
       url: 'https://www.vegas.com/gaming/gaming-tips/sports-betting/',
       title: 'Your #1 resource for sports-betting',
@@ -16,7 +18,7 @@ const userData = [
     last_name: 'Jones',
     email: 'bobsojones@email.com',
     username: 'YoBob',
-    password: 'jones',
+    password: bcrypt.hashSync('jones', 10),
     resources: [{
       url: 'http://superstringtheory.com/basics/basic4.html',
       title: 'String Theory',
@@ -32,7 +34,7 @@ const userData = [
     last_name: 'Lankaster',
     email: 'charlie@email.com',
     username: 'CharlieDontSurf',
-    password: 'lankaster',
+    password: bcrypt.hashSync('lankaster', 10),
     resources: [{
       url: 'https://www.youtube.com/watch?v=DlNWxwtqjdc',
       title: 'The Art of Building Plastic Model Airplanes',

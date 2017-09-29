@@ -3,10 +3,10 @@
 const express = require("express");
 const router = express.Router();
 const cookieSession = require('cookie-session');
-const datamovers_function = require("../lib/data-movers");
+const datamoversFunction = require("../lib/data-movers");
 
 module.exports = knex => {
-  const datamovers = datamovers_function(knex);
+  const datamovers = datamoversFunction(knex);
 
   router.get("/", (request, response) => {
     datamovers.getAllUserData().then(results => {
@@ -19,6 +19,9 @@ module.exports = knex => {
     let password = request.body.password;
 
     datamovers.authenticateUser(email, password).then((user) => {
+      if (!user) {
+        return response.status(409).send("Bad credentials");
+      }
       request.session.user_id = user.id;
       response.redirect("/");
     });
