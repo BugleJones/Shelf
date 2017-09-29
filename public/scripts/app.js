@@ -12,9 +12,4 @@ $(() => {
   $(".nav-item").on("click", "a", function() {
     $(this).toggleClass("nav-active");
   });
-
-  $(".resource-actions").on("click", "button", function() {
-    $(this).removeClass("like-btn");
-    $(this).addClass("like-clicked");
-  });
 });

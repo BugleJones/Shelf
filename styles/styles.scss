@@ -43,16 +43,3 @@
 .resource-actions {
   flex-grow: 1;
 }
-
-$like-color: #041826;
-
-@function lighten-like($color) {
-  @return lighten($color, 2%);
-}
-
-.like-clicked {
-  border-radius: 50%;
-  border: none;
-  color: #fff;
-  background-color: lighten-like($like-color);
-}
