@@ -190,20 +190,20 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form class="new-resource-form" action="/resources" method="post">
+                <form class="new-resource-form" action="api/resources/new" method="POST">
                   <div class="form-row">
                     <div class="form-group col-md-6">
-                      <label for="new-resource-url" class="col-form-label">URL</label>
-                      <input type="url" class="form-control" id="new-resource-url" placeholder="https://">
+                      <label for="new-resource-url" name="url" class="col-form-label">Link</label>
+                      <input type="url" name="url" class="form-control" id="new-resource-url" placeholder="https://">
                     </div>
                     <div class="form-group col-md-6">
-                      <label for="new-resource-title" class="col-form-label">Title</label>
-                      <input type="text" class="form-control" id="title" placeholder="Title">
+                      <label for="new-resource-title" name="title" class="col-form-label">Title</label>
+                      <input type="text" name="title" class="form-control" id="title" placeholder="Title">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="new-resource-description" class="col-form-label">Description</label>
-                    <textarea type="textarea" class="form-control" id="new-resource-description" placeholder="This resource is about..."></textarea>
+                    <label for="new-resource-description" name="description" class="col-form-label">Description</label>
+                    <textarea type="textarea" name="description" class="form-control" id="new-resource-description" placeholder="This resource is about..."></textarea>
                   </div>
                   <button type="submit" class="btn btn-outline-dark">Create</button>
                 </form>

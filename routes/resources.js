@@ -2,10 +2,11 @@
 
 const express  = require('express');
 const router  = express.Router();
-const datamoversFunction = require("../lib/resource-movers");
+const cookieSession = require('cookie-session');
+const dataMoversFunction = require("../lib/resource-movers");
 
 module.exports = knex => {
-  const datamovers = datamoversFunction(knex);
+  const dataMovers = dataMoversFunction(knex);
 
   router.get("/", function(request, response) {
     dataMovers.getResources((error, resources) => {
@@ -20,20 +21,21 @@ module.exports = knex => {
   router.post("/new", (request, response) => {
     let title = request.body.title;
     let url = request.body.url;
-    let description = request.body.email;
+    let description = request.body.description;
+    let user_id = request.session.user_id;
 
-    dataMovers.addResource(title, url, description).then((result) => {
-      let user_id = request.session.user_id;
+    dataMovers.createResource(title, url, description, user_id).then((result) => {
+      let id = result;
       response.redirect("/")
-    }
+    })
     .catch((error) => console.log(error));
   });
-
-  router.get("/:resourceid", (request, response) => {
-    dataMovers.getResources().then((result) => {
-      res.render()
-    }
-  }
+  //
+  // router.get("/:resourceid", (request, response) => {
+  //   dataMovers.getResources().then((result) => {
+  //     res.render()
+  //   })
+  // })
 
   return router;
 }
