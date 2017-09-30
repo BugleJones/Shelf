@@ -20,6 +20,7 @@ module.exports = knex => {
   });
 
   router.post("/login", (request, response) => {
+    console.log("we are in the login route GET");
     let email = request.body.email;
     let password = request.body.password;
 
@@ -33,6 +34,7 @@ module.exports = knex => {
   });
 
   router.post("/register", (request, response) => {
+    console.log("in the register post method");
     let first_name = request.body.first_name;
     let last_name = request.body.last_name;
     let email = request.body.email;
@@ -40,7 +42,7 @@ module.exports = knex => {
     let password = request.body.password;
 
     datamovers.addUser(first_name, last_name, email, username, password).then((result) => {
-      let id = result[0];
+      let id = result;
       request.session.user_id = id;
       response.redirect("/")
     })
