@@ -233,7 +233,6 @@ const makeAuxilliary = (knex, auxilliary, tableName, third_column) => {
   })
 }
 
-
 exports.seed = (knex, Promise) => {
   return knex('likes').del()              // delete like seeds first
     .then(() => knex('comments').del())

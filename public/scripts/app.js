@@ -68,29 +68,4 @@ $(() => {
     searchRes($("#query").val());
   });
 
-  // Create card element
-  // function createResourceCard(resource) {
-  //   const $card = $('<div>').addClass("card");
-  //
-  //   const $cardBody = $('<div>').addClass('card-body').data({toggle: "modal", target: "#large-resource"});
-  //
-  //   const $resourceHeader = $("<div>").addClass("resource-header");
-  //   const $cardTitle = $("<h4>").addClass("card-title").text(resource.title);
-  //   const $cardUser = $("<p>").addClass("card-user-name").text(resource.username);
-  //   $resourceHeader.append($cardTitle).append($cardUser);
-  //
-  //   const $cardText = $('<p>').addClass("card-text").text(resource.description);
-  //   const $cardURL = $("<a>").attr('href', resource.url).text(resourece.url);
-  //   $cardBody.append($resourceHeader).append($cardText).append($cardURL);
-  //
-  //   const $cardFooter = $("<div>").addClass("card-footer resource-footer");
-  //   const $resourceActions = $('<div>').addClass("resource-actions");
-  //   const $likeBtn = $('<button>').addClass("like-btn");
-  //   const $likeIcon = $('<i>').addClass("fa fa-thumbs-o-up");
-  //   $likeBtn.append($likeIcon);
-  //   $resourceActions.append($likeBtn);
-  //   $cardFooter.append($resourceActions);
-  //
-  //   $card.append($cardBody).append(cardFooter);
-  // }
 });
