@@ -39,19 +39,73 @@ const userData = [
   }
 ];
 
+
+//Seeded Tag Table Data
 const tagData = [
   {
-    name: 'Physics',
+    name: 'Physics'
   },
   {
-    name: 'Planes',
+    name: 'Planes'
   },
   {
-    name: 'Gambling',
-  }
+    name: 'Gambling'
+  },
+  {
+    name: 'Cool'
+  },
+  {
+    name: 'Fun'
+  },
+  {
+    name: 'Trendy'
+  },
+  {
+    name: 'Hipster'
+  },
+  {
+    name: 'Lit'
+  },
+  {
+    name: 'Games'
+  },
+  {
+    name: 'Basketball'
+  },
+  {
+    name: 'Sports'
+  },
+  {
+    name: 'Spicy'
+  },
+  {
+    name: 'Yum'
+  },
+  {
+    name: 'Books'
+  },
+  {
+    name: 'Math'
+  },
+  {
+    name: 'Sharks'
+  },
+  {
+    name: 'Archery Tag'
+  },
+  {
+    name: 'Wiki'
+  },
+  {
+    name: 'DIY'
+  },
+  {
+    name: 'Brain Food'
+  },
 ];
 
-const resource_tags = [
+//Seeded combined resource and tag table
+const resourceTags = [
   {
     tag_name: 'Physics',
     res_title: 'String Theory'
@@ -66,6 +120,7 @@ const resource_tags = [
   }
 ];
 
+//Seeded likes table
 const userLikes = [
   {
     username: 'CharlieDontSurf',
@@ -84,6 +139,7 @@ const userLikes = [
   },
 ];
 
+//Seeded comments table
 const userComments = [
   {
     username: 'YoBob',
@@ -103,7 +159,7 @@ const userComments = [
 ];
 
 
-//FUNCTION TO TAKE CARE OF THE RESOURCES AND USERS TABLE.
+//Function that takes care of users and resources tables
 const createUser = (knex, user) => {
   return knex('users').insert({
     first_name: user.first_name,
@@ -130,36 +186,36 @@ const createUser = (knex, user) => {
   })
 };
 
+//Starter resource seeding table
 const createResource = (knex, resource) => {
   return knex('resources').insert(resource);
 };
 
-const insertTags = (knex, resource) =>{
-
+//Starter tags seeding table
+const createTag = (knex, tag) => {
   return knex('tags').insert({
-    name: resource.name
-  });
+    name: tag.name
+  }, 'id')
 };
 
+//Create resource_tags seeded table
 const makeTag = (knex, tag, tableName) => {
-  let tag_id;   // Only read inside .then callbacks
-  return knex('tags').select('id').where('name', tag[0].name)
+  let tag_id;
+  return knex('tags').select('id').where('name', tag.tag_name)
   .then(tag_ids => {
-    if (tag_ids.length !== 1) { throw "Unable to complete function in the tag select query"; }
-    tag_id = tag_ids[0].id; // Write into enclosed wider-scope
-    return knex('resources').select('id').where('title', 'String Theory');
+    tag_id = tag_ids[0].id;
+    return knex('resources').select('id').where('title', tag.res_title);
   })
   .then(ids => {
-    if (ids.length !== 1) { throw "Unable to complete function in resources select query"; }
     return knex(tableName).insert({
-      tag_id: tag_id,   // Further reading of the enclosed variable
+      tag_id: tag_id,
       resource_id: ids[0].id
     });
   })
 }
 
+//Create likes and comments table connected
 const makeAuxilliary = (knex, auxilliary, tableName, third_column) => {
-  console.log("in the makeAuxilliary table ",auxilliary);
   let user_id;   // Only read inside .then callbacks
   return knex('users').select('id').where('username', auxilliary.username)
   .then(user_ids => {
@@ -177,14 +233,13 @@ const makeAuxilliary = (knex, auxilliary, tableName, third_column) => {
   })
 }
 
-
 exports.seed = (knex, Promise) => {
-  return knex('likes').del()              // eliminate leaves first
+  return knex('likes').del()              // delete like seeds first
     .then(() => knex('comments').del())
     .then(() => knex('resource_tags').del())
     .then(() => knex('tags').del())
     .then(() => knex('resources').del())
-    .then(() => knex('users').del())      // eliminate root last
+    .then(() => knex('users').del())      // eliminate user seeds last
     .then(() => {
       let userPromises = userData.map(user => createUser(knex, user));
       return Promise.all(userPromises);
@@ -197,12 +252,12 @@ exports.seed = (knex, Promise) => {
       let commentPromises = userComments.map(comment => makeAuxilliary(knex, comment, 'comments', 'content'));
       return Promise.all(commentPromises);
     })
-    .then(() =>{
-      let tagStuff = tagData.map(tag => insertTags(knex, tag));
-      return Promise.all(tagStuff);
+    .then(() => {
+      let tagPromises = tagData.map(tag => createTag(knex, tag));
+      return Promise.all(tagPromises);
     })
     .then(() =>{
-      let tagPromises = resource_tags.map(tag => makeTag(knex, tagData, 'resource_tags'));
+      let tagPromises = resourceTags.map(tag => makeTag(knex, tag, 'resource_tags'));
       return Promise.all(tagPromises);
     })
 };
