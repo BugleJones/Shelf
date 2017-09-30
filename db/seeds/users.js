@@ -39,6 +39,8 @@ const userData = [
   }
 ];
 
+
+//Seeded Tag Table Data
 const tagData = [
   {
     name: 'Physics'
@@ -102,6 +104,7 @@ const tagData = [
   },
 ];
 
+//Seeded combined resource and tag table
 const resourceTags = [
   {
     tag_name: 'Physics',
@@ -117,6 +120,7 @@ const resourceTags = [
   }
 ];
 
+//Seeded likes table
 const userLikes = [
   {
     username: 'CharlieDontSurf',
@@ -135,6 +139,7 @@ const userLikes = [
   },
 ];
 
+//Seeded comments table
 const userComments = [
   {
     username: 'YoBob',
@@ -154,7 +159,7 @@ const userComments = [
 ];
 
 
-//FUNCTION TO TAKE CARE OF THE RESOURCES AND USERS TABLE.
+//Function that takes care of users and resources tables
 const createUser = (knex, user) => {
   return knex('users').insert({
     first_name: user.first_name,
@@ -181,21 +186,24 @@ const createUser = (knex, user) => {
   })
 };
 
+//Starter resource seeding table
 const createResource = (knex, resource) => {
   return knex('resources').insert(resource);
 };
 
+//Starter tags seeding table
 const createTag = (knex, tag) => {
   return knex('tags').insert({
     name: tag.name
   }, 'id')
 };
 
+//Create resource_tags seeded table
 const makeTag = (knex, tag, tableName) => {
-  let tag_id;   // Only read inside .then callbacks
+  let tag_id;
   return knex('tags').select('id').where('name', tag.tag_name)
   .then(tag_ids => {
-    tag_id = tag_ids[0].id; // Write into enclosed wider-scope
+    tag_id = tag_ids[0].id;
     return knex('resources').select('id').where('title', tag.res_title);
   })
   .then(ids => {
@@ -206,6 +214,7 @@ const makeTag = (knex, tag, tableName) => {
   })
 }
 
+//Create likes and comments table connected
 const makeAuxilliary = (knex, auxilliary, tableName, third_column) => {
   let user_id;   // Only read inside .then callbacks
   return knex('users').select('id').where('username', auxilliary.username)
@@ -226,12 +235,12 @@ const makeAuxilliary = (knex, auxilliary, tableName, third_column) => {
 
 
 exports.seed = (knex, Promise) => {
-  return knex('likes').del()              // eliminate leaves first
+  return knex('likes').del()              // delete like seeds first
     .then(() => knex('comments').del())
-    // .then(() => knex('resource_tags').del())
+    .then(() => knex('resource_tags').del())
     .then(() => knex('tags').del())
     .then(() => knex('resources').del())
-    .then(() => knex('users').del())      // eliminate root last
+    .then(() => knex('users').del())      // eliminate user seeds last
     .then(() => {
       let userPromises = userData.map(user => createUser(knex, user));
       return Promise.all(userPromises);
