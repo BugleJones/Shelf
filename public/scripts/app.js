@@ -68,4 +68,18 @@ $(() => {
     searchRes($("#query").val());
   });
 
+  //Sends a write to likes table in the database
+  const addLike = () => {
+    $.ajax({
+      method: "POST",
+      url: "/api/like",
+      data: {
+        userID: $('input[name="userID"]').val(),
+        resourceID: $('.resourceID').val()
+      }
+    }).done( (result) => {
+      console.log(result);
+    })
+  }
+
 });
