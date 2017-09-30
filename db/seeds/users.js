@@ -39,6 +39,33 @@ const userData = [
   }
 ];
 
+const tagData = [
+  {
+    name: 'Physics',
+  },
+  {
+    name: 'Planes',
+  },
+  {
+    name: 'Gambling',
+  }
+];
+
+const resource_tags = [
+  {
+    tag_name: 'Physics',
+    res_title: 'String Theory'
+  },
+  {
+    tag_name: 'Planes',
+    res_title: 'The Art of Building Plastic Model Airplanes',
+  },
+  {
+    tag_name: 'Gambling',
+    res_title: 'Your #1 resource for sports-betting',
+  }
+];
+
 const userLikes = [
   {
     username: 'CharlieDontSurf',
@@ -76,6 +103,7 @@ const userComments = [
 ];
 
 
+//FUNCTION TO TAKE CARE OF THE RESOURCES AND USERS TABLE.
 const createUser = (knex, user) => {
   return knex('users').insert({
     first_name: user.first_name,
@@ -106,16 +134,41 @@ const createResource = (knex, resource) => {
   return knex('resources').insert(resource);
 };
 
+const insertTags = (knex, resource) =>{
+
+  return knex('tags').insert({
+    name: resource.name
+  });
+};
+
+const makeTag = (knex, tag, tableName) => {
+  let tag_id;   // Only read inside .then callbacks
+  return knex('tags').select('id').where('name', tag[0].name)
+  .then(tag_ids => {
+    if (tag_ids.length !== 1) { throw "Unable to complete function in the tag select query"; }
+    tag_id = tag_ids[0].id; // Write into enclosed wider-scope
+    return knex('resources').select('id').where('title', 'String Theory');
+  })
+  .then(ids => {
+    if (ids.length !== 1) { throw "Unable to complete function in resources select query"; }
+    return knex(tableName).insert({
+      tag_id: tag_id,   // Further reading of the enclosed variable
+      resource_id: ids[0].id
+    });
+  })
+}
+
 const makeAuxilliary = (knex, auxilliary, tableName, third_column) => {
+  console.log("in the makeAuxilliary table ",auxilliary);
   let user_id;   // Only read inside .then callbacks
   return knex('users').select('id').where('username', auxilliary.username)
   .then(user_ids => {
-    if (user_ids.length !== 1) { throw "Unable to complete function"; }
+    if (user_ids.length !== 1) { throw "Unable to complete function user auxilliary"; }
     user_id = user_ids[0].id; // Write into enclosed wider-scope
     return knex('resources').select('id').where('title', auxilliary.res_title);
   })
   .then(ids => {
-    if (ids.length !== 1) { throw "Unable to complete function"; }
+    if (ids.length !== 1) { throw "Unable to complete function resources in makeAuxilliary"; }
     return knex(tableName).insert({
       [third_column]: auxilliary[third_column],
       user_id: user_id,   // Further reading of the enclosed variable
@@ -124,9 +177,12 @@ const makeAuxilliary = (knex, auxilliary, tableName, third_column) => {
   })
 }
 
+
 exports.seed = (knex, Promise) => {
   return knex('likes').del()              // eliminate leaves first
     .then(() => knex('comments').del())
+    .then(() => knex('resource_tags').del())
+    .then(() => knex('tags').del())
     .then(() => knex('resources').del())
     .then(() => knex('users').del())      // eliminate root last
     .then(() => {
@@ -140,5 +196,13 @@ exports.seed = (knex, Promise) => {
     .then(() => {
       let commentPromises = userComments.map(comment => makeAuxilliary(knex, comment, 'comments', 'content'));
       return Promise.all(commentPromises);
+    })
+    .then(() =>{
+      let tagStuff = tagData.map(tag => insertTags(knex, tag));
+      return Promise.all(tagStuff);
+    })
+    .then(() =>{
+      let tagPromises = resource_tags.map(tag => makeTag(knex, tagData, 'resource_tags'));
+      return Promise.all(tagPromises);
     })
 };
