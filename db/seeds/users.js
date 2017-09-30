@@ -23,10 +23,6 @@ const userData = [
       url: 'http://superstringtheory.com/basics/basic4.html',
       title: 'String Theory',
       description: 'All the basics on string theory',
-      likes: {
-        'MurphysLaw': 5,
-        'CharlieDontSurf': 1,
-      }
     }]
   },
   {

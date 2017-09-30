@@ -1,29 +1,23 @@
 $(() => {
-<<<<<<< HEAD
-=======
-  $.ajax({
-    method: "GET",
-    url: "/api/users"
-  }).done(users => {
-    for (user of users) {
-      $("<div>")
-        .text(`${user.url} by the user ${user.username}`)
-        .appendTo($("body"));
-    }
-  });
->>>>>>> 027502fbb6d922eb6124ef5d49d18f14b0bb12a6
+  // $.ajax({
+  //   method: "GET",
+  //   url: "/api/users"
+  // }).done(users => {
+  //   for (user of users) {
+  //     $("<div>")
+  //       .text(`${user.url} by the user ${user.username}`)
+  //       .appendTo($("body"));
+  //   }
+  // });
 
   $(".nav-item").on("click", "a", function() {
     $(this).toggleClass("nav-active");
   });
 
-<<<<<<< HEAD
-=======
   $(".card-footer").on("click", "button", function() {
     $(this).toggleClass("clicked-like");
     $("button").blur();
   });
->>>>>>> 027502fbb6d922eb6124ef5d49d18f14b0bb12a6
 
   //Searches database
   const searchRes = searchFormData => {
