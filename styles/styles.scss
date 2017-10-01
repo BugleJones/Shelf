@@ -94,3 +94,11 @@
 .register {
   display: none;
 }
+
+#username {
+  color: #007bff;
+}
+
+#username:hover {
+  color: lighten(#007bff, 15%);
+}
