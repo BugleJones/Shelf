@@ -1,10 +1,12 @@
+const bcrypt = require("bcrypt");
+
 const userData = [
   {
     first_name: 'Alice',
     last_name: 'Murphy',
     email: 'alicemurphy@email.com',
     username: 'MurphysLaw',
-    password: 'murphy',
+    password: bcrypt.hashSync('murphy', 10),
     resources: [{
       url: 'https://www.vegas.com/gaming/gaming-tips/sports-betting/',
       title: 'Your #1 resource for sports-betting',
@@ -16,15 +18,11 @@ const userData = [
     last_name: 'Jones',
     email: 'bobsojones@email.com',
     username: 'YoBob',
-    password: 'jones',
+    password: bcrypt.hashSync('jones', 10),
     resources: [{
       url: 'http://superstringtheory.com/basics/basic4.html',
       title: 'String Theory',
       description: 'All the basics on string theory',
-      likes: {
-        'MurphysLaw': 5,
-        'CharlieDontSurf': 1,
-      }
     }]
   },
   {
@@ -32,7 +30,7 @@ const userData = [
     last_name: 'Lankaster',
     email: 'charlie@email.com',
     username: 'CharlieDontSurf',
-    password: 'lankaster',
+    password: bcrypt.hashSync('lankaster', 10),
     resources: [{
       url: 'https://www.youtube.com/watch?v=DlNWxwtqjdc',
       title: 'The Art of Building Plastic Model Airplanes',
@@ -41,6 +39,88 @@ const userData = [
   }
 ];
 
+
+//Seeded Tag Table Data
+const tagData = [
+  {
+    name: 'Physics'
+  },
+  {
+    name: 'Planes'
+  },
+  {
+    name: 'Gambling'
+  },
+  {
+    name: 'Cool'
+  },
+  {
+    name: 'Fun'
+  },
+  {
+    name: 'Trendy'
+  },
+  {
+    name: 'Hipster'
+  },
+  {
+    name: 'Lit'
+  },
+  {
+    name: 'Games'
+  },
+  {
+    name: 'Basketball'
+  },
+  {
+    name: 'Sports'
+  },
+  {
+    name: 'Spicy'
+  },
+  {
+    name: 'Yum'
+  },
+  {
+    name: 'Books'
+  },
+  {
+    name: 'Math'
+  },
+  {
+    name: 'Sharks'
+  },
+  {
+    name: 'Archery Tag'
+  },
+  {
+    name: 'Wiki'
+  },
+  {
+    name: 'DIY'
+  },
+  {
+    name: 'Brain Food'
+  },
+];
+
+//Seeded combined resource and tag table
+const resourceTags = [
+  {
+    tag_name: 'Physics',
+    res_title: 'String Theory'
+  },
+  {
+    tag_name: 'Planes',
+    res_title: 'The Art of Building Plastic Model Airplanes',
+  },
+  {
+    tag_name: 'Gambling',
+    res_title: 'Your #1 resource for sports-betting',
+  }
+];
+
+//Seeded likes table
 const userLikes = [
   {
     username: 'CharlieDontSurf',
@@ -59,6 +139,7 @@ const userLikes = [
   },
 ];
 
+//Seeded comments table
 const userComments = [
   {
     username: 'YoBob',
@@ -78,6 +159,7 @@ const userComments = [
 ];
 
 
+//Function that takes care of users and resources tables
 const createUser = (knex, user) => {
   return knex('users').insert({
     first_name: user.first_name,
@@ -104,20 +186,45 @@ const createUser = (knex, user) => {
   })
 };
 
+//Starter resource seeding table
 const createResource = (knex, resource) => {
   return knex('resources').insert(resource);
 };
 
+//Starter tags seeding table
+const createTag = (knex, tag) => {
+  return knex('tags').insert({
+    name: tag.name
+  }, 'id')
+};
+
+//Create resource_tags seeded table
+const makeTag = (knex, tag, tableName) => {
+  let tag_id;
+  return knex('tags').select('id').where('name', tag.tag_name)
+  .then(tag_ids => {
+    tag_id = tag_ids[0].id;
+    return knex('resources').select('id').where('title', tag.res_title);
+  })
+  .then(ids => {
+    return knex(tableName).insert({
+      tag_id: tag_id,
+      resource_id: ids[0].id
+    });
+  })
+}
+
+//Create likes and comments table connected
 const makeAuxilliary = (knex, auxilliary, tableName, third_column) => {
   let user_id;   // Only read inside .then callbacks
   return knex('users').select('id').where('username', auxilliary.username)
   .then(user_ids => {
-    if (user_ids.length !== 1) { throw "Unable to complete function"; }
+    if (user_ids.length !== 1) { throw "Unable to complete function user auxilliary"; }
     user_id = user_ids[0].id; // Write into enclosed wider-scope
     return knex('resources').select('id').where('title', auxilliary.res_title);
   })
   .then(ids => {
-    if (ids.length !== 1) { throw "Unable to complete function"; }
+    if (ids.length !== 1) { throw "Unable to complete function resources in makeAuxilliary"; }
     return knex(tableName).insert({
       [third_column]: auxilliary[third_column],
       user_id: user_id,   // Further reading of the enclosed variable
@@ -127,10 +234,12 @@ const makeAuxilliary = (knex, auxilliary, tableName, third_column) => {
 }
 
 exports.seed = (knex, Promise) => {
-  return knex('likes').del()              // eliminate leaves first
+  return knex('likes').del()              // delete like seeds first
     .then(() => knex('comments').del())
+    .then(() => knex('resource_tags').del())
+    .then(() => knex('tags').del())
     .then(() => knex('resources').del())
-    .then(() => knex('users').del())      // eliminate root last
+    .then(() => knex('users').del())      // eliminate user seeds last
     .then(() => {
       let userPromises = userData.map(user => createUser(knex, user));
       return Promise.all(userPromises);
@@ -142,5 +251,13 @@ exports.seed = (knex, Promise) => {
     .then(() => {
       let commentPromises = userComments.map(comment => makeAuxilliary(knex, comment, 'comments', 'content'));
       return Promise.all(commentPromises);
+    })
+    .then(() => {
+      let tagPromises = tagData.map(tag => createTag(knex, tag));
+      return Promise.all(tagPromises);
+    })
+    .then(() =>{
+      let tagPromises = resourceTags.map(tag => makeTag(knex, tag, 'resource_tags'));
+      return Promise.all(tagPromises);
     })
 };
