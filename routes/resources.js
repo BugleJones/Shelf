@@ -18,16 +18,36 @@ module.exports = knex => {
     });
   });
 
-  router.post("/new", (request, response) => {
+  router.get("/"), function(request, response) {
+    dataMovers.getTags((error, response) => {
+      if (err) {
+        response.status(500).json({ error: err.message });
+      } else {
+        response.json(tags);
+      }
+    });
+  };
+
+  router.post("/new", (request, response, next) => {
     let title = request.body.title;
     let url = request.body.url;
     let description = request.body.description;
     let user_id = request.session.user_id;
+    let name = request.body.tag;
 
     dataMovers.createResource(title, url, description, user_id).then((result) => {
-      let id = result;
-      response.redirect("/")
+      let resourceId = result;
     })
+    
+    //TODO Alter table to disalllow the name value from being null
+    if (!name) {
+      return null;
+    }
+    dataMovers.createTag(name).then((otherResult) => {
+    let tagId = otherResult;
+    })
+
+    response.redirect("/")
     .catch((error) => console.log(error));
   });
   //

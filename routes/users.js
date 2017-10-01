@@ -8,11 +8,11 @@ const dataMoversFunction = require("../lib/data-movers");
 module.exports = knex => {
   const dataMovers = dataMoversFunction(knex);
 
-  router.get("/", (request, response) => {
-    dataMovers.getAllUserData().then(results => {
-      response.json(results);
-    });
-  });
+  // router.get("/", (request, response) => {
+  //   dataMovers.getAllUserData().then(results => {
+  //     response.json(results);
+  //   });
+  // });
 
   router.get('/logout', (request, response) => {
     request.session.user_id = null;
