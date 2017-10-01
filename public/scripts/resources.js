@@ -23,7 +23,7 @@ $(() => {
 
   // TODO return resource specific tags/comments
   function createResource(resourceObject) {
-    console.log(resourceObject)
+    console.log(resourceObject.comments)
     return {
       id: resourceObject.id,
       title: resourceObject.title,
@@ -32,7 +32,7 @@ $(() => {
       created_at: resourceObject.created_at,
       tags: [
         {
-        name: resourceObject.tags[0].name, //TODO Tags need some reworking
+        name: resourceObject.tags.name, //TODO Tags need some reworking
         },
       ],
       user: {
