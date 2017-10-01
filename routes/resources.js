@@ -1,12 +1,11 @@
 "use strict";
 
-const userHelper = require("../lib/data-movers")
-const express  = require('express');
-const resourcesRoutes  = express.Router();
+const userHelper = require("../lib/data-movers");
+const express = require("express");
+const router = express.Router();
 
 module.exports = function(dataMovers) {
-
-  resourcesRoutes.get("/", function(req, res) {
+  router.get("/", function(req, res) {
     dataMovers.getResources((err, resources) => {
       if (err) {
         res.status(500).json({ error: err.message });
@@ -15,5 +14,5 @@ module.exports = function(dataMovers) {
       }
     });
   });
-
+};
 // knex.select('title', 'author', 'year').from('books')
