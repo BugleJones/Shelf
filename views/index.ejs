@@ -10,6 +10,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.3.1/js/tether.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/resources.js"></script>
   </head>
 
   <body>
@@ -90,96 +91,13 @@
       <div class="container all-resources">
         <div class="row">
           <div class="card-columns">
-            <div class="card">
-              <div class="card-body" data-toggle="modal" data-target='#large-resource'>
-                <div class="resource-header">
-                  <h4 class="card-title">TITLE</h4>
-                  <p class="card-user-name">YoBoB</p>
-                </div>
-                <p class="card-text">This is a resource about liking a resource OVER 9000 times! Please smash that like button, otherwise my wife will beat me</p>
-                <a href="#">This is the URL</a>
-              </div>
-              <div class="card-footer resource-footer">
-                <div class="resource-actions">
-                  <button class="like-btn"><i class="fa fa-thumbs-o-up"></i></button>
-                </div>
-                <div class="resource-footer-tags">
-                  <a href="#" class="badge badge-dark">Physics</a>
-                  <a href="#" class="badge badge-secondary">Gambling</a>
-                  <a href="#" class="badge badge-info">Learning</a>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title">TITLE</h4>
-                <p class="card-text">This is a resource about liking a resource OVER 9000 times! Please smash that like button, otherwise my wife will beat me</p>
-                <a href="#">This is the URL</a>
-              </div>
-              <div class="card-footer resource-footer">
-                <div class="resource-actions">
-                  <button class="like-btn"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
-                </div>
-                <div class="resource-footer-tags">
-                  <a href="#" class="badge badge-dark">Physics</a>
-                  <a href="#" class="badge badge-secondary">Gambling</a>
-                  <a href="#" class="badge badge-info">Learning</a>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title">TITLE</h4>
-                <p class="card-text">this is not a resource</p>
-                <a href="#">This is the URL</a>
-              </div>
-              <div class="card-footer resource-footer">
-                <div class="resource-actions">
-                  <button class="like-btn"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
-                </div>
-                <div class="resource-footer-tags">
-                  <a href="#" class="badge badge-dark">Physics</a>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title">TITLE</h4>
-                <p class="card-text">This is a resource about liking a resource OVER 9000 times! Please smash that like button, otherwise my wife will beat me this is a really long resource and the text seems to go on forever and ever and ever and ever and ever i should really stop, sorry guys </p>
-                <a href="#">This is the URL</a>
-              </div>
-              <div class="card-footer resource-footer">
-                <div class="resource-actions">
-                  <button class="like-btn"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
-                </div>
-                <div class="resource-footer-tags">
-                  <a href="#" class="badge badge-dark">Physics</a>
-                  <a href="#" class="badge badge-secondary">Gambling</a>
-                  <a href="#" class="badge badge-info">Learning</a>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title">TITLE</h4>
-                <p class="card-text">This is a resource about liking a resource OVER 9000 times! Please smash that like button, otherwise my wife will beat me</p>
-                <a href="#">This is the URL</a>
-              </div>
-              <div class="card-footer resource-footer">
-                <div class="resource-actions">
-                  <button class="like-btn"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
-                </div>
-                <div class="resource-footer-tags">
-
-                </div>
-              </div>
-            </div>
+            <!-- Resource Cards go here -->
           </div>
         </div>
       </div>
       <!--Compose Modal -->
       <div class="compose">
-        <button type="button" class="btn btn-outline-dark create-btn" data-toggle="modal" data-target="#composeModal">+</button>
+        <button  class="btn btn-primary btn-lg create-btn" data-toggle="modal" data-target="#composeModal"><i class="fa fa-plus" aria-hidden="true"></i></button>
         <div class="modal fade" id="composeModal" tabindex="-1" role="dialog" aria-labelledby="composeModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -191,6 +109,7 @@
               </div>
               <div class="modal-body">
                 <form class="new-resource-form" action="api/resources/new" method="POST">
+<<<<<<< HEAD
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="new-resource-url" name="url" class="col-form-label">Link</label>
@@ -201,13 +120,30 @@
                       <input type="text" name="title" class="form-control" id="title" placeholder="Title">
                     </div>
                     <div class="form-group col-md-6">
+=======
+                 <div class="form-row">
+                   <div class="form-group col-md-6">
+                     <label for="new-resource-url" name="url" class="col-form-label">Link</label>
+                     <input type="url" name="url" class="form-control" id="new-resource-url" placeholder="https://">
+                   </div>
+                    <div class="form-group col-md-6">
+                     <label for="new-resource-title" name="title" class="col-form-label">Title</label>
+                     <input type="text" name="title" class="form-control" id="title" placeholder="Title">
+                    </div>
+                    <div class="form-group col-md-12">
+>>>>>>> 632124548365480dc273eeed3074e883a6ba53de
                       <label for="new-resource-title" name="tag" class="col-form-label">Tags</label>
                       <input type="text" name="tag" class="form-control" id="tag" placeholder="What tags best represent this resource?">
                     </div>
                   </div>
                   <div class="form-group">
+<<<<<<< HEAD
                     <label for="new-resource-description" name="description" class="col-form-label">Description</label>
                     <textarea type="textarea" name="description" class="form-control" id="new-resource-description" placeholder="This resource is about..."></textarea>
+=======
+                    <label for="new-resource-description" name="description"class="col-form-label">Description</label>
+                    <textarea type="textarea" class="form-control" name="description"id="new-resource-description" placeholder="This resource is about..."></textarea>
+>>>>>>> 632124548365480dc273eeed3074e883a6ba53de
                   </div>
                   <button type="submit" class="btn btn-outline-dark">Create</button>
                 </form>
@@ -217,74 +153,7 @@
         </div>
       </div>
       <!-- Resource Modal -->
-      <div class="modal fade" id="large-resource" tabindex="-1" role="dialog" aria-labelledby="large-resource-title" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title" id="large-resource-title">Resource Title</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <h6>Description</h6>
-              <p>This is a resource all about how my life got turned, flipped up-side down, so id like to take a minute just sit right there and I'll tell you how i became the prince of Shelf-air.</p>
-              <h6>URL: <a href="#">http://example.com</a></h6>
-              <div class="resource-footer">
-                <div class="resource-actions">
-                  <button class="like-btn"><i class="fa fa-heart-o" aria-hidden="true"></i></button>
-                </div>
-                <div class="resource-tags">
-                  <a href="#" class="badge badge-dark">Physics</a>
-                  <a href="#" class="badge badge-secondary">Gambling</a>
-                  <a href="#" class="badge badge-info">Learning</a>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <div class="comments">
-                <h5 class="mr-sm-2">Comments</h5>
-                <h5><i class="fa fa-pencil-square-o" aria-hidden="true"></i></h5>
-              </div>
-              <form class="new-comment" action="/comment" method="post">
-                <div class="form-group">
-                  <textarea class="form-control comment-content"></textarea>
-                </div>
-                  <button class="btn btn-outline-dark btn-sm mb-sm-2" type="submit">Submit</button>
-              </form>
-              <div class="user-comments">
-                <div class="comment-header">
-                  <h6>User Name</h6>
-                </div>
-                <div class="comment-body">
-                  <p>This resource is soooooo cool</p>
-                </div>
-                <div class="comment-footer">
-                  <small>2 minutes ago</small>
-                </div>
-                <div class="comment-header">
-                  <h6>User Name</h6>
-                </div>
-                <div class="comment-body">
-                  <p>This resource is soooooo cool</p>
-                </div>
-                <div class="comment-footer">
-                  <small>2 minutes ago</small>
-                </div>
-                <div class="comment-header">
-                  <h6>User Name</h6>
-                </div>
-                <div class="comment-body">
-                  <p>This resource is soooooo cool</p>
-                </div>
-                <div class="comment-footer">
-                  <small>2 minutes ago</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
   </body>
 </html>

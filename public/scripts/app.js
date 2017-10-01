@@ -42,11 +42,11 @@ $(() => {
       });
   };
 
-  $(".comments").on("click", "i", function() {
-    $(".new-comment").stop();
-    $(".new-comment").slideToggle("fast");
-    $("textarea").focus();
-  });
+  // $(".comments").on("click", "div", function() {
+  //   $(".new-comment").stop();
+  //   $(".new-comment").slideToggle("fast");
+  //   $("textarea").focus();
+  // });
 
   $(".navbar-nav").on("click", "span", function() {
     $(".login").stop();
@@ -67,5 +67,4 @@ $(() => {
     event.preventDefault();
     searchRes($("#query").val());
   });
-
 });
