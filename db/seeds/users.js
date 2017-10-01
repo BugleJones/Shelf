@@ -43,79 +43,79 @@ const userData = [
 //Seeded Tag Table Data
 const tagData = [
   {
-    name: 'Physics'
+    name: 'physics'
   },
   {
-    name: 'Planes'
+    name: 'planes'
   },
   {
-    name: 'Gambling'
+    name: 'gambling'
   },
   {
-    name: 'Cool'
+    name: 'cool'
   },
   {
-    name: 'Fun'
+    name: 'fun'
   },
   {
-    name: 'Trendy'
+    name: 'trendy'
   },
   {
-    name: 'Hipster'
+    name: 'hipster'
   },
   {
-    name: 'Lit'
+    name: 'lit'
   },
   {
-    name: 'Games'
+    name: 'games'
   },
   {
-    name: 'Basketball'
+    name: 'basketball'
   },
   {
-    name: 'Sports'
+    name: 'sports'
   },
   {
-    name: 'Spicy'
+    name: 'spicy'
   },
   {
-    name: 'Yum'
+    name: 'yum'
   },
   {
-    name: 'Books'
+    name: 'books'
   },
   {
-    name: 'Math'
+    name: 'math'
   },
   {
-    name: 'Sharks'
+    name: 'sharks'
   },
   {
-    name: 'Archery Tag'
+    name: 'archery tag'
   },
   {
-    name: 'Wiki'
+    name: 'wiki'
   },
   {
-    name: 'DIY'
+    name: 'diy'
   },
   {
-    name: 'Brain Food'
+    name: 'brain food'
   },
 ];
 
 //Seeded combined resource and tag table
 const resourceTags = [
   {
-    tag_name: 'Physics',
+    tag_name: 'physics',
     res_title: 'String Theory'
   },
   {
-    tag_name: 'Planes',
+    tag_name: 'planes',
     res_title: 'The Art of Building Plastic Model Airplanes',
   },
   {
-    tag_name: 'Gambling',
+    tag_name: 'gambling',
     res_title: 'Your #1 resource for sports-betting',
   }
 ];

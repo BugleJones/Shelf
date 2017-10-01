@@ -1,39 +1,52 @@
 $(() => {
-  const resources = [1, 2, 3, 4, 5, 6, 7].map(createResource);
-  createAllModals(resources);
-  createAllResources(resources);
-  const lastResource = resources[resources.length - 1];
-  const lastTags = printTags(lastResource.tags);
-  $(".resource-footer-tags:first").append(lastTags);
 
-  const lastComments = printComments(lastResource.comments);
-  $(".user-comments:first").append(lastComments);
+  //Get all resources inner-joined
+  function getResources() {
+    $.ajax({
+      method: "GET",
+      dataType: "json",
+      url: `/api/resources/`
+    }).done((resources) => {
+        const allResources = resources.map(createResource);
+        createAllModals(allResources);
+        createAllResources(allResources);
+        const lastResource = allResources[resources.length - 1];
+        const lastTags = printTags(lastResource.tags);
+        $(".resource-footer-tags:first").append(lastTags);
 
-  // TODO this is mocking resources, they should later come from the server
-  function createResource(id) {
+        const lastComments = printComments(lastResource.comments);
+        $(".user-comments:first").append(lastComments);
+      })
+  };
+
+  getResources();
+
+  // TODO return resource specific tags/comments
+  function createResource(resourceObject) {
+    console.log(resourceObject)
     return {
-      id: id,
-      title: "Cool Resource Title " + id,
-      description: "this is a resource" + id,
-      url: "http://example.com",
-      created_at: 12248134314 + id,
-      tags: ["good", "cool", "funny"],
+      id: resourceObject.id,
+      title: resourceObject.title,
+      description: resourceObject.description,
+      url: resourceObject.url,
+      created_at: resourceObject.created_at,
+      tags: [resourceObject.name, "cool", "funny"], //TODO Tags need some reworking
       user: {
-        id: id,
-        username: "YoBob"
+        id: resourceObject.id,
+        username: resourceObject.username
       },
-      likes: id,
+      likes: resourceObject.count,
       isLiked: true,
       comments: [
         {
-          username: "AMurph",
-          message: "Great resource!",
-          created_at: 12248134314 + id
+          username: resourceObject.username,
+          message: resourceObject.content,
+          created_at: resourceObject.created_at
         },
         {
           username: "CharlieDontSurf",
-          message: "This is dumb.",
-          created_at: 122481343454 + id
+          message: resourceObject.content,
+          created_at: resourceObject.created_at
         }
       ]
     };
@@ -260,4 +273,5 @@ $(() => {
     $modalContent.append($modalBody).append($modalFooter);
     return $modal;
   }
+
 });

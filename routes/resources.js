@@ -8,25 +8,17 @@ const dataMoversFunction = require("../lib/resource-movers");
 module.exports = knex => {
   const dataMovers = dataMoversFunction(knex);
 
-  router.get("/", function(request, response) {
-    dataMovers.getResources((error, resources) => {
-      if (err) {
-        res.status(500).json({ error: err.message });
-      } else {
-        res.json(resources);
-      }
-    });
-  });
-
-  router.get("/"), function(request, response) {
-    dataMovers.getTags((error, response) => {
-      if (err) {
-        response.status(500).json({ error: err.message });
-      } else {
-        response.json(tags);
-      }
-    });
-  };
+  router.get("/", (request, response) => {
+      knex('resources')
+        .innerJoin('resource_tags', 'resources.id', 'resource_tags.resource_id')
+        .innerJoin('tags', 'tags.id', 'resource_tags.tag_id')
+        .innerJoin('likes', 'resources.id', 'likes.resource_id')
+        .innerJoin('comments', 'resources.id', 'comments.resource_id')
+        .innerJoin('users', 'resources.user_id', 'users.id')
+        .then((results) => {
+          response.json(results);
+      });
+  })
 
   router.post("/new", (request, response) => {
     let title = request.body.title;
@@ -40,9 +32,9 @@ module.exports = knex => {
     })
 
     //TODO Alter table to disalllow the name value from being null
-    if (!name) {
-      return null;
-    }
+    // if (!name) {
+    //   return null;
+    // }
     dataMovers.createTag(name).then((otherResult) => {
       let tagId = otherResult;
     })
