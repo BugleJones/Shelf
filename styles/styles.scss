@@ -56,12 +56,12 @@
   align-items: center;
 }
 
-.btn .btn-secondary .like-btn .clicked-like {
+.clicked-like {
   background-color: #007bff;
   border: 1px solid #007bff;
 }
 
-.btn .btn-secondary .like-btn .clicked-like:hover {
+.clicked-like:hover {
   border: 1px solid lighten(#007bff, 15%);
   background-color: lighten(#007bff, 15%);
 }

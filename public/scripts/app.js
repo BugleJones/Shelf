@@ -1,20 +1,10 @@
 $(() => {
-  // $.ajax({
-  //   method: "GET",
-  //   url: "/api/users"
-  // }).done(users => {
-  //   for (user of users) {
-  //     $("<div>")
-  //       .text(`${user.url} by the user ${user.username}`)
-  //       .appendTo($("body"));
-  //   }
-  // });
 
   $(".nav-item").on("click", "a", function() {
     $(this).toggleClass("nav-active");
   });
 
-  $(".card-footer").on("click", "button", function() {
+  $(".resource-actions").on("click", "button", function() {
     $(this).toggleClass("clicked-like");
     $("button").blur();
   });
@@ -41,12 +31,6 @@ $(() => {
         console.error(e);
       });
   };
-
-  // $(".comments").on("click", "div", function() {
-  //   $(".new-comment").stop();
-  //   $(".new-comment").slideToggle("fast");
-  //   $("textarea").focus();
-  // });
 
   $(".navbar-nav").on("click", "span", function() {
     $(".login").stop();
