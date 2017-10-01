@@ -33,7 +33,7 @@ module.exports = knex => {
     let url = request.body.url;
     let description = request.body.description;
     let user_id = request.session.user_id;
-    let name = request.body.tag;
+    let tag_name = request.body.tag;
 
     dataMovers.createResource(title, url, description, user_id).then((result) => {
       let resourceId = result;
@@ -43,7 +43,7 @@ module.exports = knex => {
     if (!name) {
       return null;
     }
-    dataMovers.createTag(name).then((otherResult) => {
+    dataMovers.createTag(tag_name).then((otherResult) => {
     let tagId = otherResult;
     })
 
