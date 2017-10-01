@@ -3,19 +3,19 @@
 const express = require("express");
 const router = express.Router();
 const cookieSession = require('cookie-session');
-const datamoversFunction = require("../lib/data-movers");
+const dataMoversFunction = require("../lib/data-movers");
 
 module.exports = knex => {
-  const datamovers = datamoversFunction(knex);
+  const dataMovers = dataMoversFunction(knex);
 
-  router.get("/", (request, response) => {
-    datamovers.getAllUserData().then(results => {
-      response.json(results);
-    });
-  });
+  // router.get("/", (request, response) => {
+  //   dataMovers.getAllUserData().then(results => {
+  //     response.json(results);
+  //   });
+  // });
 
   router.get('/logout', (request, response) => {
-    request.session.user_id = null;
+    request.session = null;
     response.redirect("/");
   });
 
@@ -23,11 +23,11 @@ module.exports = knex => {
     let email = request.body.email;
     let password = request.body.password;
 
-    datamovers.authenticateUser(email, password).then((user) => {
+    dataMovers.authenticateUser(email, password).then((user) => {
       if (!user) {
         return response.status(409).send("Bad credentials");
       }
-      request.session.user_id = user.id;
+      request.session.user = user;
       response.redirect("/");
     });
   });
@@ -39,10 +39,10 @@ module.exports = knex => {
     let username = request.body.username;
     let password = request.body.password;
 
-    datamovers.addUser(first_name, last_name, email, username, password).then((result) => {
-      let id = result[0];
+    dataMovers.addUser(first_name, last_name, email, username, password).then((result) => {
+      let id = result;
       request.session.user_id = id;
-      response.redirect("/")
+      response.redirect("/");
     })
     .catch((error) => console.log(error));
   });

@@ -7,16 +7,39 @@
 .navbar-brand {
   font-size: 2em;
 }
+.navbar-nav {
+  align-items: center;
+  position: relative;
+}
+
+.logout {
+  position: absolute;
+  right: 20px;
+}
+
+.tags {
+  margin-right: 0.25rem;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
 
 .create-btn {
   position: fixed;
-  bottom: 20px;
+  top: 100px;
   right: 20px;
   border-radius: 50%;
 }
 .compose-toggle {
   color: #fff;
   background-color: #343a40;
+}
+
+.card-title {
+  margin-right: 0.5rem;
 }
 
 .nav-active {
@@ -33,18 +56,19 @@
   align-items: center;
 }
 
-.like-btn {
-  border-radius: 50%;
-  background: none;
-  border: 1px solid #000;
-  margin-right: 5px;
+.btn .btn-secondary .like-btn .clicked-like {
+  background-color: #007bff;
+  border: 1px solid #007bff;
 }
 
-.clicked-like {
-  content: "\f164";
-  color: #fff;
-  border: 1px solid #007bff;
-  background-color: #007bff;
+.btn .btn-secondary .like-btn .clicked-like:hover {
+  border: 1px solid lighten(#007bff, 15%);
+  background-color: lighten(#007bff, 15%);
+}
+// TODO COMEBACK AND FIX THIS SHIT
+.fa .fa-thumbs-up {
+  font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 .resource-actions {
@@ -66,11 +90,15 @@
   align-items: flex-start;
 }
 
-.new-comment {
-  display: none;
-}
-
 .login,
 .register {
   display: none;
+}
+
+#username {
+  color: #007bff;
+}
+
+#username:hover {
+  color: lighten(#007bff, 15%);
 }

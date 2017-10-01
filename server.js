@@ -22,6 +22,8 @@ const addLikes = require("./routes/likes");
 const unlike = require("./routes/unlike");
 const comments = require("./routes/comments");
 // const resourcesRoutes = require("./routes/resources");
+const resourcesRoutes = require("./routes/resources");
+
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -44,11 +46,19 @@ app.use(
 );
 app.use(express.static("public"));
 
-app.use(cookieSession({
-  name: 'session',
-  keys: [process.env.SESSION_SECRET || 'development']
-}));
+app.use(
+  cookieSession({
+    name: "session",
+    keys: [process.env.SESSION_SECRET || "development"]
+  })
+);
 
+app.use((req, res, next) => {
+  res.locals = {
+    user: req.session.user
+  }
+  next();
+});
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/search", searchRoutes(knex));
