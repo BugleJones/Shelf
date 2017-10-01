@@ -82,4 +82,25 @@ $(() => {
     })
   }
 
+  //Deletes from likes table in the database
+ const unLike = () => {
+   $.ajax({
+     method: "POST",
+     url: "/api/unlike"
+   }).done( () => {
+     showLiked();
+   })
+ }
+
+  //Sends a write to comments table in the database
+ const addComment = () => {
+   $.ajax({
+     method: "POST",
+     url: "/api/comments",
+     data: $(".new-comment").serialize(),
+     dataType: "json"
+   }).done( (result) => {
+     console.log(result);
+   })
+ }
 });

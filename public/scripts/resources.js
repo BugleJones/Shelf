@@ -5,7 +5,7 @@ $(() => {
     $.ajax({
       method: "GET",
       dataType: "json",
-      url: `/api/resources/`
+      url: `/api/resources`
     }).done((resources) => {
         const allResources = resources.map(createResource);
         createAllResources(allResources);
@@ -250,11 +250,13 @@ $(() => {
 
     const $newComment = $("<form>")
       .addClass("new-comment")
-      .attr({ action: "/comment", method: "post" });
+      .attr({ action: "api/comments", method: "POST" })
+      .attr("name", "content");
     const $commentFormGroup = $("<div>").addClass("form-group");
     const $formMsg = $("<textarea>")
       .addClass("form-control comment-content")
-      .attr("placeholder", "Add a comment.");
+      .attr("placeholder", "Add a comment.")
+      .attr("name", "content");
     $commentFormGroup.append($formMsg);
     const $commentBtn = $("<button>")
       .addClass("btn btn-outline-dark btn-sm mb-sm-2")
