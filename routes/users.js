@@ -15,7 +15,7 @@ module.exports = knex => {
   // });
 
   router.get('/logout', (request, response) => {
-    request.session.user_id = null;
+    request.session = null;
     response.redirect("/");
   });
 
@@ -27,7 +27,7 @@ module.exports = knex => {
       if (!user) {
         return response.status(409).send("Bad credentials");
       }
-      request.session.user_id = user.id;
+      request.session.user = user;
       response.redirect("/");
     });
   });

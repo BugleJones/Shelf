@@ -51,6 +51,12 @@ app.use(
   })
 );
 
+app.use((req, res, next) => {
+  res.locals = {
+    user: req.session.user
+  }
+  next();
+});
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/search", searchRoutes(knex));
