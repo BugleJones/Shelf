@@ -85,7 +85,7 @@ $(() => {
     tags.forEach(tag => {
       const $newTag = $("<span>")
         .addClass("badge badge-primary tags")
-        .text(tag);
+        .text(tag.name);
       $(".resource-footer-tags").append($newTag);
     });
   }

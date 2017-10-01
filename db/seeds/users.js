@@ -10,7 +10,7 @@ const userData = [
     resources: [{
       url: 'https://www.vegas.com/gaming/gaming-tips/sports-betting/',
       title: 'Your #1 resource for sports-betting',
-      description: 'In-depth to all your sports-betting needs'
+      description: 'In-depth guide to all your sports-betting needs'
     }]
   },
   {
