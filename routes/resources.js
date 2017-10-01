@@ -38,7 +38,7 @@ module.exports = knex => {
     dataMovers.createResource(title, url, description, user_id).then((result) => {
       let resourceId = result;
     })
-    
+
     //TODO Alter table to disalllow the name value from being null
     if (!name) {
       return null;
