@@ -10,11 +10,11 @@ module.exports = knex => {
 
   router.get("/", (request, response) => {
       knex('resources')
-        .innerJoin('resource_tags', 'resources.id', 'resource_tags.resource_id')
-        .innerJoin('tags', 'tags.id', 'resource_tags.tag_id')
-        .innerJoin('likes', 'resources.id', 'likes.resource_id')
-        .innerJoin('comments', 'resources.id', 'comments.resource_id')
-        .innerJoin('users', 'resources.user_id', 'users.id')
+        .join('resource_tags', 'resources.id', 'resource_tags.resource_id')
+        .join('tags', 'tags.id', 'resource_tags.tag_id')
+        .join('likes', 'resources.id', 'likes.resource_id')
+        .join('comments', 'resources.id', 'comments.resource_id')
+        .join('users', 'resources.user_id', 'users.id')
         .then((results) => {
           response.json(results);
       });

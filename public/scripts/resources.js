@@ -8,8 +8,8 @@ $(() => {
       url: `/api/resources/`
     }).done((resources) => {
         const allResources = resources.map(createResource);
-        createAllModals(allResources);
         createAllResources(allResources);
+        createAllModals(allResources);
         const lastResource = allResources[resources.length - 1];
         const lastTags = printTags(lastResource.tags);
         $(".resource-footer-tags:first").append(lastTags);
