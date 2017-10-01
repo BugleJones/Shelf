@@ -7,50 +7,18 @@ $(() => {
       dataType: "json",
       url: `/api/resources`
     }).done((resources) => {
-        const allResources = resources.map(createResource);
-        createAllResources(allResources);
-        createAllModals(allResources);
-        const lastResource = allResources[resources.length - 1];
-        const lastTags = printTags(lastResource.tags);
-        $(".resource-footer-tags:first").append(lastTags);
+      createAllResources(resources);
+      createAllModals(resources);
+      const lastResource = resources[resources.length - 1];
+      const lastTags = printTags(lastResource.tags);
+      $(".resource-footer-tags:first").append(lastTags);
 
-        const lastComments = printComments(lastResource.comments);
-        $(".user-comments:first").append(lastComments);
-      })
+      const lastComments = printComments(lastResource.comments);
+      $(".user-comments:first").append(lastComments);
+    })
   };
 
   getResources();
-
-  // TODO return resource specific tags/comments
-  function createResource(resourceObject) {
-    console.log(resourceObject.comments)
-    return {
-      id: resourceObject.id,
-      title: resourceObject.title,
-      description: resourceObject.description,
-      url: resourceObject.url,
-      created_at: resourceObject.created_at,
-      tags: [
-        {
-        name: resourceObject.tags.name, //TODO Tags need some reworking
-        },
-      ],
-      user: {
-        id: resourceObject.id,
-        username: resourceObject.user.username
-      },
-      likes: resourceObject.likes,
-      isLiked: true,
-      comments: resourceObject.comments,
-      // [
-      //   {
-      //     username: resourceObject.comments.username,
-      //     message: resourceObject.message,
-      //     created_at: resourceObject.created_at
-      //   },
-      // ]
-    };
-  }
 
   function timeSince(date) {
     var seconds = Math.floor((new Date() - date) / 1000);
