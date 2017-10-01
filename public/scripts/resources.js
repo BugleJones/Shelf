@@ -30,25 +30,25 @@ $(() => {
       description: resourceObject.description,
       url: resourceObject.url,
       created_at: resourceObject.created_at,
-      tags: [resourceObject.name, "cool", "funny"], //TODO Tags need some reworking
+      tags: resourceObject.tags, //TODO Tags need some reworking
       user: {
         id: resourceObject.id,
-        username: resourceObject.username
+        username: resourceObject.user.username
       },
       likes: resourceObject.count,
       isLiked: true,
-      comments: [
-        {
-          username: resourceObject.username,
-          message: resourceObject.content,
-          created_at: resourceObject.created_at
-        },
-        {
-          username: "CharlieDontSurf",
-          message: resourceObject.content,
-          created_at: resourceObject.created_at
-        }
-      ]
+      comments: resourceObject.comments
+      //   {
+      //     username: resourceObject.username,
+      //     message: resourceObject.message,
+      //     created_at: resourceObject.created_at
+      //   },
+      //   {
+      //     username: "CharlieDontSurf",
+      //     message: resourceObject.content,
+      //     created_at: resourceObject.created_at
+      //   }
+      // ]
     };
   }
 
