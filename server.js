@@ -51,7 +51,7 @@ app.use(
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/search", searchRoutes(knex));
-// app.use("/api/resources", resourcesRoutes(knex));
+app.use("/api/resources", resourcesRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {

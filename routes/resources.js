@@ -28,12 +28,12 @@ module.exports = knex => {
     });
   };
 
-  router.post("/new", (request, response, next) => {
+  router.post("/new", (request, response) => {
     let title = request.body.title;
     let url = request.body.url;
     let description = request.body.description;
     let user_id = request.session.user_id;
-    let tag_name = request.body.tag;
+    let name = request.body.tag.toLowerCase();
 
     dataMovers.createResource(title, url, description, user_id).then((result) => {
       let resourceId = result;
@@ -43,8 +43,8 @@ module.exports = knex => {
     if (!name) {
       return null;
     }
-    dataMovers.createTag(tag_name).then((otherResult) => {
-    let tagId = otherResult;
+    dataMovers.createTag(name).then((otherResult) => {
+      let tagId = otherResult;
     })
 
     response.redirect("/")
