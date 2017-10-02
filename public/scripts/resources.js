@@ -258,6 +258,7 @@ $(() => {
 
     const $displayComments = $("<div>").addClass("user-comments");
     printComments(resource.comments);
+    // -----------------------------------------------------------------------------------
 
     $modalFooter
       .append($modalCommentsHeader)
