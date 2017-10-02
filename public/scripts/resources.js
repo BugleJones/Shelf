@@ -94,6 +94,18 @@ $(() => {
     });
   }
 
+  // function loadAllLikes(resources) {
+  //   resources.forEach(resource => {
+  //     return loadLikes(resource.id);
+  //   });
+  // }
+
+  function loadLikes(resourceID) {
+    $.get("/api/likes", resourceID,  (result) => {
+      $("#like-btn").text(result);
+    })
+  }
+
   function createAllResources(resources) {
     const $cards = $(".card-columns");
     $cards.empty();
@@ -136,10 +148,10 @@ $(() => {
       .append($cardURL);
 
     const $cardFooter = $("<div>").addClass("card-footer resource-footer");
-    const $resourceActions = $("<div>").addClass("resource-actions");
-    const $likeBtn = $("<button>")
-      .addClass("btn btn-secondary mr-sm-2")
-      .text(" " + resource.likes);
+    const $resourceActions = $("<div>").addClass("resource-actions").attr("data-resource-id", resource.id);
+    const $likeBtn = $("<button>").attr("id", "like-btn")
+      .addClass("btn btn-secondary mr-sm-2");
+    loadLikes(resource.id);
     const $likeIcon = $("<i>").addClass("fa fa-thumbs-up");
     $likeBtn.prepend($likeIcon);
     $resourceActions.append($likeBtn);
@@ -167,7 +179,8 @@ $(() => {
         tabindex: "-1",
         role: "dialog",
         "aria-labelledby": "large-resource-title",
-        "aria-hidden": "true"
+        "aria-hidden": "true",
+        "data-resource-id": resource.id
       });
     const $modalDialog = $("<div>")
       .addClass("modal-dialog")
@@ -203,10 +216,10 @@ $(() => {
       .text(resource.url);
     $modalUrlTitle.append($modalUrlLink);
     const $modalResourceFooter = $("<div>").addClass("resource-footer");
-    const $resourceActions = $("<div>").addClass("resource-actions");
+    const $resourceActions = $("<div>").addClass("resource-actions").attr("data-resource-id", resource.id);
     const $likeBtn = $("<button>")
-      .addClass("btn btn-secondary mr-sm-2")
-      .text(" " + resource.likes);
+      .addClass("btn btn-secondary mr-sm-2");
+
     const $likeIcon = $("<i>").addClass("fa fa-thumbs-up");
     $likeBtn.prepend($likeIcon);
     $resourceActions.append($likeBtn);
