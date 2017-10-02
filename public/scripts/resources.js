@@ -198,12 +198,11 @@ $(() => {
     $modalUrlTitle.append($modalUrlLink);
     const $modalResourceFooter = $("<div>").addClass("resource-footer");
     const $resourceActions = $("<div>").addClass("resource-actions");
-    const $likeBtn = $("<button>")
-      .addClass("btn btn-secondary mr-sm-2")
-    //   .text(" " + resource.likes);
-    // const $likeIcon = $("<i>").addClass("fa fa-thumbs-up");
-    // $likeBtn.prepend($likeIcon);
-    // $resourceActions.append($likeBtn);
+    const $likeBtn = $("<button>").attr("type", "submit")
+      .addClass("btn btn-secondary mr-sm-2");
+    const $likeForm = $("<form>").attr({action: "/api/likes", method: "post"})
+    const $likeFormHidden = $("<input>").addClass("hidden-input").attr("name", "resource_id").val(resource.id);
+    $likeForm.append($likeFormHidden).append($likeBtn);
     $likeBtn.text('');
     if(!resource.likes){
       resource.likes = [];
@@ -253,7 +252,6 @@ $(() => {
       .attr({ action: "api/resources/comments/:user_id", method: "POST" });
     const $commentFormGroup = $("<div>").addClass("form-group")
     const $formHiddenResource = $("<input>").addClass("hidden-input").val(resource.id).attr("name", "resource_id");
-    // const $formHiddenUser = $("<input>").addClass("hidden-input").val(user.id).attr("name", "resource_id");
     const $formMsg = $("<textarea>")
       .addClass("form-control comment-content")
       .attr({ placeholder: "Add a comment.", name: "content"});
