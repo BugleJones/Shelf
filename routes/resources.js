@@ -46,13 +46,13 @@ module.exports = knex => {
     let title = request.body.title;
     let url = request.body.url;
     let description = request.body.description;
-    let user_id = request.session.user_id;
+    let user_id = Number(request.session.user_id);
     let name = request.body.tag.toLowerCase();
 
     dataMovers.createResource(title, url, description, user_id).then((result) => {
-      let resource_id = result[0];
+      let resource_id = Number(result[0]);
       dataMovers.createTag(name, resource_id).then((otherResult) => {
-        let tagId = otherResult[0];
+        let tagId = Number(otherResult[0]);
       })
     })
 
