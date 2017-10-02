@@ -58,7 +58,18 @@ $(() => {
   //   });
   // }
 
-
+  // function printTags($cardTags, tags) {
+  //   $("cardTags").empty();
+  //   if(!tags){
+  //     tags = [];
+  //   }
+  //   tags.forEach(tag => {
+  //     console.log(tag); let $newTag = $("<span>")
+  //       .addClass("badge badge-primary tags")
+  //       .text(tag.name);
+  //     $(".cardTags").append($newTag);
+  //   });
+  // }
 
   function printComments(comments) {
     $(".user-comments").empty();
