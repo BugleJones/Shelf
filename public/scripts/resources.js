@@ -54,7 +54,7 @@ $(() => {
       const $singleComment = $("<div>").addClass("singleComment");
       const $commentHeader = $("<div>").addClass("comment-header");
       const $commentUsername = $("<h6>").text(comment.username);
-      const commentDate = timeSince(comment.created_at);
+      const commentDate = Date(comment.created_at);
       const $commentTimestamp = $("<small>").text(commentDate);
       $commentHeader.append($commentUsername).append($commentTimestamp);
       const $commentBody = $("<p>")
