@@ -1,5 +1,17 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+#custom-nav {
+  background: rgba(181,234,238,1);
+  background: -moz-linear-gradient(left, rgba(181,234,238,1) 0%, rgba(42,229,229,1) 0%, rgba(190,236,239,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(181,234,238,1)), color-stop(0%, rgba(42,229,229,1)), color-stop(100%, rgba(190,236,239,1)));
+  background: -webkit-linear-gradient(left, rgba(181,234,238,1) 0%, rgba(42,229,229,1) 0%, rgba(190,236,239,1) 100%);
+  background: -o-linear-gradient(left, rgba(181,234,238,1) 0%, rgba(42,229,229,1) 0%, rgba(190,236,239,1) 100%);
+  background: -ms-linear-gradient(left, rgba(181,234,238,1) 0%, rgba(42,229,229,1) 0%, rgba(190,236,239,1) 100%);
+  background: linear-gradient(to right, rgba(181,234,238,1) 0%, rgba(42,229,229,1) 0%, rgba(190,236,239,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5eaee', endColorstr='#beecef', GradientType=1 );
+}
+
+
 .logo {
   width: 50px;
   padding-right: 10px;
@@ -27,11 +39,17 @@
   align-items: flex-start;
 }
 
+.modal-header {
+  background-color: rgba(181,234,238,1);
+}
+
 .create-btn {
+  background-color: rgba(181,234,238,1);
   position: fixed;
   top: 100px;
   right: 20px;
   border-radius: 50%;
+  border: none;
 }
 .compose-toggle {
   color: #fff;
@@ -93,12 +111,4 @@
 .login,
 .register {
   display: none;
-}
-
-#username {
-  color: #007bff;
-}
-
-#username:hover {
-  color: lighten(#007bff, 15%);
 }

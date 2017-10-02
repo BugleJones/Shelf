@@ -94,18 +94,31 @@ $(() => {
     });
   }
 
-  // function loadAllLikes(resources) {
-  //   resources.forEach(resource => {
-  //     return loadLikes(resource.id);
-  //   });
-  // }
 
-  function loadLikes(resourceID) {
-    $.get("/api/likes", resourceID,  (result) => {
-      $("#like-btn").text(result);
-    })
+  function loadAllLikes(resources) {
+    resources.forEach(resource => {
+      return loadLikes(resource);
+    });
   }
+  loadAllLikes(resources);
 
+  function loadLikes(resource) {
+
+      // $.get("/api/likes", resource,  (result) => {
+      //   $("#like-btn").text(result);
+      // })
+
+      $.ajax({
+        url: '/api/likes',
+        type: 'get',
+        dataType: "json",
+        data: {resourceID: resource.id},
+        success: (result) => {
+          $("#like-btn").text(result);
+        }
+      });
+
+  }
   function createAllResources(resources) {
     const $cards = $(".card-columns");
     $cards.empty();
@@ -151,7 +164,6 @@ $(() => {
     const $resourceActions = $("<div>").addClass("resource-actions").attr("data-resource-id", resource.id);
     const $likeBtn = $("<button>").attr("id", "like-btn")
       .addClass("btn btn-secondary mr-sm-2");
-    loadLikes(resource.id);
     const $likeIcon = $("<i>").addClass("fa fa-thumbs-up");
     $likeBtn.prepend($likeIcon);
     $resourceActions.append($likeBtn);
@@ -218,8 +230,8 @@ $(() => {
     const $modalResourceFooter = $("<div>").addClass("resource-footer");
     const $resourceActions = $("<div>").addClass("resource-actions").attr("data-resource-id", resource.id);
     const $likeBtn = $("<button>")
-      .addClass("btn btn-secondary mr-sm-2");
-
+      .addClass("btn btn-secondary mr-sm-2")
+      .attr("id", "like-btn");
     const $likeIcon = $("<i>").addClass("fa fa-thumbs-up");
     $likeBtn.prepend($likeIcon);
     $resourceActions.append($likeBtn);

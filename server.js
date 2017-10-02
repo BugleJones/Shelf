@@ -49,9 +49,9 @@ app.use(
   })
 );
 
-app.use((req, res, next) => {
-  res.locals = {
-    user: req.session.user
+app.use((request, response, next) => {
+  response.locals = {
+    user: request.session.user
   }
   next();
 });

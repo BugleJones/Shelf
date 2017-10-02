@@ -9,15 +9,18 @@ module.exports = knex => {
   const dataMovers = dataMoversFunction(knex);
 
   router.get("/", (request, response) => {
-    dataMovers.sumLikes(req.body);
+    // console.log(request.params.id);
+    dataMovers.sumLikes(request.params.id).then(result => {
+      response.send(result);
+    });
   });
 
   router.post("/", (request, response) => {
     let user_id = request.session.user.id;
-    dataMovers.likeHandler(req.body, user_id);
-    dataMovers.sumLikes(req.body).then((result) => {
-
-    })
+    // console.log(request.params.resourceID);
+    dataMovers.likeHandler(request.params.resourceID, user_id).then(result => {
+      response.send(result);
+    });
   });
 
 
