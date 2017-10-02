@@ -12,8 +12,8 @@ $(() => {
       createAllResources(resources);
       createAllModals(resources);
       const lastResource = resources[resources.length - 1];
-      const lastTags = printTags(lastResource.tags);
-      $(".resource-footer-tags:first").append(lastTags);
+      // const lastTags = printTags(lastResource.tags);
+      // $(".resource-footer-tags:first").append(lastTags);
       console.log(resources)
       const lastComments = printComments(lastResource.comments);
       $(".user-comments:first").append(lastComments);
@@ -52,21 +52,21 @@ $(() => {
    }
 
   //Sends a write to comments table in the database
-   const addComment = () => {
-     $.ajax({
-       method: "POST",
-       url: "/api/comments",
-       data: $(".new-comment").serialize(),
-       dataType: "json"
-     }).done( (result) => {
-       console.log(result);
-     })
-   }
-
-   $('.new_comment').on('submit', (event) => {
-    event.preventDefault();
-    addComment();
-  });
+  //  const addComment = () => {
+  //    $.ajax({
+  //      method: "POST",
+  //      url: "/api/comments",
+  //      data: $(".new-comment").serialize(),
+  //      dataType: "json"
+  //    }).done( (result) => {
+  //      console.log(result);
+  //    })
+  //  }
+  //
+  //  $('#comment-button').on('click', (event) => {
+  //   event.preventDefault();
+  //   addComment();
+  // });
 
 
   function timeSince(date) {
@@ -95,17 +95,6 @@ $(() => {
       return "Just now";
     }
     return Math.floor(seconds) + " seconds ago";
-  }
-
-  function printTags(tags) {
-    $(".resource-footer-tags").empty();
-    console.log(tag.name)
-    tags.forEach(tag => {
-      const $newTag = $("<span>")
-        .addClass("badge badge-primary tags")
-        .text(tag.name);
-      $(".resource-footer-tags").append($newTag);
-    });
   }
 
   function printComments(comments) {
@@ -170,16 +159,24 @@ $(() => {
     const $resourceActions = $("<div>").addClass("resource-actions");
     const $likeBtn = $("<button>")
       .addClass("btn btn-secondary mr-sm-2")
-      .attr({ action: "api/likes/new", method: "POST", type: "submit", name: "like", id: "like" })
       .text(" " + resource.likes);
     const $likeIcon = $("<i>").addClass("fa fa-thumbs-up");
     $likeBtn.prepend($likeIcon);
     $resourceActions.append($likeBtn);
 
     const $cardTags = $("<div>").addClass("resource-footer-tags");
+    $cardTags.empty();
+    if(!resource.tags){
+      resource.tags = [];
+    }
+    resource.tags.forEach(tag =>{
+      let $newTag = $("<span>").addClass("badge badge-primary tags").text(tag.name);
+      $cardTags.append($newTag);
+    });
+
+
 
     $cardFooter.append($resourceActions).append($cardTags);
-    printTags(resource.tags);
 
     $card.append($cardBody).append($cardFooter);
     return $card;
@@ -238,14 +235,22 @@ $(() => {
     const $resourceActions = $("<div>").addClass("resource-actions");
     const $likeBtn = $("<button>")
       .addClass("btn btn-secondary mr-sm-2")
-      .attr({ action: "api/likes/new", method: "POST", type: "submit", name: "like" })
       .text(" " + resource.likes);
     const $likeIcon = $("<i>").addClass("fa fa-thumbs-up");
     $likeBtn.prepend($likeIcon);
     $resourceActions.append($likeBtn);
 
     const $modalTags = $("<div>").addClass("resource-footer-tags");
-    printTags(resource.tags);
+      $modalTags.empty();
+    if(!resource.tags){
+      resource.tags = [];
+    }
+    resource.tags.forEach(tag =>{
+      let $newTag = $("<span>").addClass("badge badge-primary tags").text(tag.name);
+      $modalTags.append($newTag);
+    });
+
+
     $modalResourceFooter.append($resourceActions).append($modalTags);
     $modalBody
       .append($modalDescriptTitle)
@@ -270,16 +275,15 @@ $(() => {
 
     const $newComment = $("<form>")
       .addClass("new-comment")
-      .attr({ action: "api/comments", method: "POST", name: "content" });
+      .attr({ action: "api/comments/new", method: "POST" })
     const $commentFormGroup = $("<div>").addClass("form-group");
     const $formMsg = $("<textarea>")
       .addClass("form-control comment-content")
-      .attr("placeholder", "Add a comment.")
-      .attr("name", "content");
+      .attr({ placeholder: "Add a comment.", name: "content" })
     $commentFormGroup.append($formMsg);
     const $commentBtn = $("<button>")
       .addClass("btn btn-outline-dark btn-sm mb-sm-2")
-      .attr("type", "submit")
+      .attr({type: "submit"})
       .text("Submit");
     $newComment.append($commentFormGroup).append($commentBtn);
 
