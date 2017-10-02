@@ -6,7 +6,7 @@ const cookieSession = require('cookie-session');
 const dataMoversFunction = require("../lib/resource-movers");
 
 module.exports = knex => {
-  const dataMovers = dataMoversFunction(knex);
+  const resourceMovers = dataMoversFunction(knex);
 
   router.get("/", (request, response) => {
     knex
@@ -49,9 +49,9 @@ module.exports = knex => {
     let user_id = Number(request.session.user.id) || null;
     let name = request.body.tag.toLowerCase();
 
-    dataMovers.createResource(title, url, description, user_id).then((result) => {
+    resourceMovers.createResource(title, url, description, user_id).then((result) => {
       let resource_id = Number(result[0]) || 0;
-      dataMovers.createTag(name, resource_id).then((otherResult) => {
+      resourceMovers.createTag(name, resource_id).then((otherResult) => {
         let tagId = Number(otherResult[0]);
       })
     })
@@ -71,7 +71,7 @@ module.exports = knex => {
     let resource_id = Number(request.body.resource_id);
     // let created_at = Date.now();
 
-    dataMovers.createComment(content, user_id, resource_id).then((furtherResult) => {
+    resourceMovers.createComment(content, user_id, resource_id).then((furtherResult) => {
       let commentId = furtherResult[0];
     })
      .catch((error) => console.log(error));
