@@ -27,6 +27,11 @@ module.exports = knex => {
           row.tags = tags;
        })
        promises.push(c);
+       let d = knex('likes').count('id').where('resource_id', row.id).then((likes)=>{
+         row.likes = likes;
+         console.log(likes);
+       })
+        promises.push(d);
      })
      return Promise.all(promises).then(()=>{
         return rows;
