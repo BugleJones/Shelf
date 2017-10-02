@@ -37,30 +37,6 @@ const userData = [
       description: 'Part 1 of the amazing 3 part series on building plastic model airplanes'
     }]
   }
-  // {
-  //   first_name: 'Mandy',
-  //   last_name: 'Brown',
-  //   email: 'mandybrown@email.com',
-  //   username: 'HeyMandy',
-  //   password: bcrypt.hashSync('murphy', 10),
-  //   resources: [{
-  //     url: 'http://climate.weather.gc.ca/climate_data/daily_data_e.html?StationID=51442',
-  //     title: 'Historical ',
-  //     description: 'In-depth guide to all your sports-betting needs'
-  //   }]
-  // },
-  // {
-  //   first_name: 'Alice',
-  //   last_name: 'Murphy',
-  //   email: 'alicemurphy@email.com',
-  //   username: 'MurphysLaw',
-  //   password: bcrypt.hashSync('murphy', 10),
-  //   resources: [{
-  //     url: 'https://www.vegas.com/gaming/gaming-tips/sports-betting/',
-  //     title: 'Your #1 resource for sports-betting',
-  //     description: 'In-depth guide to all your sports-betting needs'
-  //   }]
-  // }
 ];
 
 

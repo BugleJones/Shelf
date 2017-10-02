@@ -111,13 +111,13 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="composeModalLabel">Create Resource</h5>
+                <h5 class="modal-title" id="composeModalLabel">Add to Your Shelf</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                <form class="new-resource-form" action="api/resources/new" method="POST">
+                <form class="new-resource-form" action="/api/resources/new" method="POST">
                   <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="new-resource-url" name="url" class="col-form-label">Link</label>
@@ -128,7 +128,7 @@
                       <input type="text" name="title" class="form-control" id="title" placeholder="Title">
                     </div>
                     <div class="form-group col-md-6">
-                      <label for="new-resource-title" name="tag" class="col-form-label">Tags</label>
+                      <label for="new-resource-title" name="tag" class="col-form-label">Tag</label>
                       <input type="text" name="tag" class="form-control" id="tag" placeholder="Me in one word?">
                     </div>
                   </div>
