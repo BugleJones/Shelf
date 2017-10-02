@@ -12,7 +12,7 @@ $(() => {
       const lastResource = resources[resources.length - 1];
       const lastTags = printTags(lastResource.tags);
       $(".resource-footer-tags:first").append(lastTags);
-
+      console.log(resources)
       const lastComments = printComments(lastResource.comments);
       $(".user-comments:first").append(lastComments);
     })
@@ -50,6 +50,7 @@ $(() => {
 
   function printTags(tags) {
     $(".resource-footer-tags").empty();
+    console.log(tag.name)
     tags.forEach(tag => {
       const $newTag = $("<span>")
         .addClass("badge badge-primary tags")
