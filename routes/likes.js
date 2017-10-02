@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const dataMoversFunction = require("../lib/resource-movers");
+const dataMoversFunction = require("../lib/data-movers");
 
 module.exports = (knex) => {
   const dataMovers = dataMoversFunction(knex);

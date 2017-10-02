@@ -19,7 +19,7 @@ const knexLogger = require("knex-logger");
 const usersRoutes = require("./routes/users");
 const searchRoutes = require("./routes/search");
 const resourcesRoutes = require("./routes/resources")
-const addLikes = require("./routes/likes");
+const likesRoutes = require("./routes/likes");
 const unlike = require("./routes/unlike");
 // const comments = require("./routes/comments");
 
@@ -61,7 +61,7 @@ app.use((req, res, next) => {
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/search", searchRoutes(knex));
 app.use("/api/resources", resourcesRoutes(knex));
-app.use("/api/likes", addLikes(knex));
+app.use("/api/likes", likesRoutes(knex));
 app.use("/api/unlike", unlike(knex));
 // app.use("/api/comments", resourceRoutes(knex));
 
