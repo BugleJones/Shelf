@@ -14,7 +14,7 @@ $(() => {
     $(this).toggleClass("nav-active");
   });
 
-  $(".card-footer").on("click", "button", function() {
+  $(".resource-actions").on("click", "button", function() {
     $(this).toggleClass("clicked-like");
     $("button").blur();
   });

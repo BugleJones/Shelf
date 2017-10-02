@@ -108,8 +108,11 @@ $(() => {
 
     const $cardFooter = $("<div>").addClass("card-footer resource-footer");
     const $resourceActions = $("<div>").addClass("resource-actions");
-    const $likeBtn = $("<button>")
-      .addClass("btn btn-secondary mr-sm-2")
+    const $likeForm = $("<form>").attr({action: "/api/likes", method: "post"})
+    const $likeFormHidden = $("<input>").addClass("hidden-input").attr("name", "resource_id").val(resource.id);
+    const $likeBtn = $("<button>").attr("type", "submit")
+      .addClass("btn btn-secondary mr-sm-2");
+    $likeForm.append($likeFormHidden).append($likeBtn);
     //   .text(" " + resource.id);
     //   // console.log(resource);
     // const $likeIcon = $("<i>").addClass("fa fa-thumbs-up");
@@ -125,7 +128,7 @@ $(() => {
       $likeBtn.text(" " + like.count).prepend($newLike);
     });
 
-    $resourceActions.append($likeBtn);
+    $resourceActions.append($likeForm);
 
 
     const $cardTags = $("<div>").addClass("resource-footer-tags");
