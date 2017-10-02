@@ -90,7 +90,7 @@ $(() => {
       .text(resource.title);
     const $cardUser = $("<p>")
       .addClass("card-user-name")
-      .text(resource[username]);
+      .text(resource.username);
 
     $resourceHeader.append($cardTitle).append($cardUser);
 
@@ -223,7 +223,7 @@ $(() => {
 
     const $newComment = $("<form>")
       .addClass("new-comment")
-      .attr({ action: "api/comments/update", method: "POST" });
+      .attr({ action: "api/resources/comments/:user_id", method: "POST" });
     const $commentFormGroup = $("<div>").addClass("form-group")
     const $formMsg = $("<textarea>")
       .addClass("form-control comment-content")
