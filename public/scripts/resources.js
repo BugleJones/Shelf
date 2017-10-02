@@ -226,7 +226,6 @@ $(() => {
     }
     resource.likes.forEach(like =>{
       let $newLike = $("<i>").addClass("fa fa-thumbs-up");
-      console.log($newLike);
       $likeBtn.text(" " + like.count).prepend($newLike);
     });
 
