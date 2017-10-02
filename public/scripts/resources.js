@@ -216,14 +216,25 @@ $(() => {
     const $resourceActions = $("<div>").addClass("resource-actions");
     const $likeBtn = $("<button>")
       .addClass("btn btn-secondary mr-sm-2")
-      .text(" " + resource.likes);
-    const $likeIcon = $("<i>").addClass("fa fa-thumbs-up");
-    $likeBtn.prepend($likeIcon);
+    //   .text(" " + resource.likes);
+    // const $likeIcon = $("<i>").addClass("fa fa-thumbs-up");
+    // $likeBtn.prepend($likeIcon);
+    // $resourceActions.append($likeBtn);
+    $likeBtn.text('');
+    if(!resource.likes){
+      resource.likes = [];
+    }
+    resource.likes.forEach(like =>{
+      let $newLike = $("<i>").addClass("fa fa-thumbs-up");
+      console.log($newLike);
+      $likeBtn.text(" " + like.count).prepend($newLike);
+    });
+
     $resourceActions.append($likeBtn);
 
     const $modalTags = $("<div>").addClass("resource-footer-tags");
     // printTags($modal.tags, resource.tags); -----------------------------------------------------
-      $modalTags.empty();
+    $modalTags.empty();
     if(!resource.tags){
       resource.tags = [];
     }
