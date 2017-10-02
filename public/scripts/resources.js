@@ -9,6 +9,7 @@ $(() => {
       dataType: "json",
       url: `/api/resources`
     }).done((resources) => {
+      console.log(resources);
       createAllResources(resources);
       createAllModals(resources);
       const lastResource = resources[resources.length - 1];
@@ -225,13 +226,15 @@ $(() => {
       .addClass("new-comment")
       .attr({ action: "api/resources/comments/:user_id", method: "POST" });
     const $commentFormGroup = $("<div>").addClass("form-group")
+    const $formHiddenResource = $("<input>").addClass("hidden-input").val(resource.id).attr("name", "resource_id");
+    // const $formHiddenUser = $("<input>").addClass("hidden-input").val(user.id).attr("name", "resource_id");
     const $formMsg = $("<textarea>")
       .addClass("form-control comment-content")
       .attr({ placeholder: "Add a comment.", name: "content"});
-    $commentFormGroup.append($formMsg);
+    $commentFormGroup.append($formHiddenResource).append($formMsg);
     const $commentBtn = $("<button>")
       .addClass("btn btn-outline-dark btn-sm mb-sm-2")
-      .attr({type: "submit", value: "submit"})
+      .attr({ type: "submit", value: "submit" })
       .text("Submit");
     $newComment.append($commentFormGroup).append($commentBtn);
 

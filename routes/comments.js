@@ -7,7 +7,7 @@ const dataMoversFunction = require("../lib/resource-movers");
 
 module.exports = (knex) => {
   const resourceMovers = dataMoversFunction(knex);
-
+ // 
  // router.post("/comments", (request, response) => {
  //   knex('comments')
  //   .insert({

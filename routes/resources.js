@@ -63,10 +63,11 @@ module.exports = knex => {
   router.post("/comments/:user_id", (request, response) => {
     let content = request.body.content;
     let user_id = request.session.user.id;
-    let resource_id = request.body.resource_id;
+    let resource_id = Number(request.body.resource_id);
+    // let created_at = Date.now();
 
-    dataMovers.createComment(content, user_id, resource_id).then((futherResult) => {
-      let commentId = furtherResult;
+    dataMovers.createComment(content, user_id, resource_id).then((furtherResult) => {
+      let commentId = furtherResult[0];
     })
      .catch((error) => console.log(error));
      response.redirect("/")
