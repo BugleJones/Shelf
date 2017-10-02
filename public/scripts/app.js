@@ -14,7 +14,7 @@ $(() => {
     $(this).toggleClass("nav-active");
   });
 
-  $(".card-footer").on("click", "button", function() {
+  $(".resource-actions").on("click", "button", function() {
     $(this).toggleClass("clicked-like");
     $("button").blur();
   });
@@ -28,11 +28,11 @@ $(() => {
     })
       .done(result => {
         $(".search-results").empty();
-        $("<h2>")
+        $("<h3>")
           .text("Results:")
           .appendTo($(".search-results"));
         result.rows.forEach(row => {
-          $("<div>")
+          $("<a>")
             .text(row.title)
             .appendTo($(".search-results"));
         });

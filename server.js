@@ -19,8 +19,13 @@ const knexLogger = require("knex-logger");
 const usersRoutes = require("./routes/users");
 const searchRoutes = require("./routes/search");
 const resourcesRoutes = require("./routes/resources")
+<<<<<<< HEAD
 // const addLikes = require("./routes/likes");
 // const unlike = require("./routes/unlike");
+=======
+const likesRoutes = require("./routes/likes");
+const unlike = require("./routes/unlike");
+>>>>>>> 0f94f89b5f284ec317957fee59a88bbc8e0150b8
 // const comments = require("./routes/comments");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -62,9 +67,9 @@ app.use((req, res, next) => {
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/search", searchRoutes(knex));
 app.use("/api/resources", resourcesRoutes(knex));
-// app.use("/api/likes", addLikes(knex));
-// app.use("/api/unlike", unlike(knex));
 app.use("/api/comments", resourcesRoutes(knex));
+app.use("/api/likes", likesRoutes(knex));
+app.use("/api/unlike", unlike(knex));
 
 // Home page
 app.get("/", (req, res) => {
