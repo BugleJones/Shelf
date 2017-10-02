@@ -8,16 +8,13 @@ module.exports = (knex) => {
   const dataMovers = dataMoversFunction(knex);
 
  router.post("/comments", (request, response) => {
-   let content = request.body.title;
-   let resource_id = request.body.resourceID;
-   let user_id = request.session.user_id;
-
-   dataMovers.createComment(content, resource_id, user_id).then((result) => {
-     let commentId = result.id;
-     let commentContent = result.content;
-     let userComment = result.user_id;
+   knex('comments')
+   .insert({
+     user_id: request.body.userID,
+     resource_id: request.body.resourceID,
+     comment: request.body.content
    }).then((comment) => {
-     response.json(comment).redirect("/");
+     response.json(comment);
    })
  })
 

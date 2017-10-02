@@ -67,40 +67,45 @@ $(() => {
     event.preventDefault();
     searchRes($("#query").val());
   });
-
-  //Sends a write to likes table in the database
-  const addLike = () => {
-    $.ajax({
-      method: "POST",
-      url: "/api/like",
-      data: {
-        userID: $('input[name="userID"]').val(),
-        resourceID: $('.resourceID').val()
-      }
-    }).done( (result) => {
-      console.log(result);
-    })
-  }
-
-  //Deletes from likes table in the database
- const unLike = () => {
-   $.ajax({
-     method: "POST",
-     url: "/api/unlike"
-   }).done( () => {
-     showLiked();
-   })
- }
-
-  //Sends a write to comments table in the database
- const addComment = () => {
-   $.ajax({
-     method: "POST",
-     url: "/api/comments",
-     data: $(".new-comment").serialize(),
-     dataType: "json"
-   }).done( (result) => {
-     console.log(result);
-   })
- }
+//
+//   //Sends a write to likes table in the database
+//   const addLike = () => {
+//     $.ajax({
+//       method: "POST",
+//       url: "/api/likes",
+//       data: {
+//         userID: $('input[name="userID"]').val(),
+//         resourceID: $('.resourceID').val()
+//       }
+//     }).done( (result) => {
+//       console.log(result);
+//     })
+//   }
+//
+//   $('#like').on('submit', (event) => {
+//   event.preventDefault();
+//     addLike();
+//   });
+//
+//   //Deletes from likes table in the database
+//  const unLike = () => {
+//    $.ajax({
+//      method: "POST",
+//      url: "/api/unlike"
+//    }).done( () => {
+//      showLiked();
+//    })
+//  }
+//
+//   //Sends a write to comments table in the database
+//  const addComment = () => {
+//    $.ajax({
+//      method: "POST",
+//      url: "/api/comments",
+//      data: $(".new-comment").serialize(),
+//      dataType: "json"
+//    }).done( (result) => {
+//      console.log(result);
+//    })
+//  }
 });

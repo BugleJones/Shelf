@@ -1,3 +1,5 @@
+
+//document ready
 $(() => {
 
   //Get all resources inner-joined
@@ -19,6 +21,53 @@ $(() => {
   };
 
   getResources();
+
+  //Sends a write to likes table in the database
+  const addLike = () => {
+    $.ajax({
+      method: "POST",
+      url: "/api/likes",
+      data: {
+        userID: $('input[name="userID"]').val(),
+        resourceID: $('.resourceID').val()
+      }
+    }).done( (result) => {
+      console.log(result);
+    })
+  }
+
+  $("").on('submit', (event) => {
+  event.preventDefault();
+    addLike();
+  });
+
+  //Deletes from likes table in the database
+   const unLike = () => {
+     $.ajax({
+       method: "POST",
+       url: "/api/unlike"
+     }).done( () => {
+       showLiked();
+     })
+   }
+
+  //Sends a write to comments table in the database
+   const addComment = () => {
+     $.ajax({
+       method: "POST",
+       url: "/api/comments",
+       data: $(".new-comment").serialize(),
+       dataType: "json"
+     }).done( (result) => {
+       console.log(result);
+     })
+   }
+
+   $('.new_comment').on('submit', (event) => {
+    event.preventDefault();
+    addComment();
+  });
+
 
   function timeSince(date) {
     var seconds = Math.floor((new Date() - date) / 1000);
@@ -121,6 +170,7 @@ $(() => {
     const $resourceActions = $("<div>").addClass("resource-actions");
     const $likeBtn = $("<button>")
       .addClass("btn btn-secondary mr-sm-2")
+      .attr({ action: "api/likes/new", method: "POST", type: "submit", name: "like", id: "like" })
       .text(" " + resource.likes);
     const $likeIcon = $("<i>").addClass("fa fa-thumbs-up");
     $likeBtn.prepend($likeIcon);
@@ -188,6 +238,7 @@ $(() => {
     const $resourceActions = $("<div>").addClass("resource-actions");
     const $likeBtn = $("<button>")
       .addClass("btn btn-secondary mr-sm-2")
+      .attr({ action: "api/likes/new", method: "POST", type: "submit", name: "like" })
       .text(" " + resource.likes);
     const $likeIcon = $("<i>").addClass("fa fa-thumbs-up");
     $likeBtn.prepend($likeIcon);
@@ -219,8 +270,7 @@ $(() => {
 
     const $newComment = $("<form>")
       .addClass("new-comment")
-      .attr({ action: "api/comments", method: "POST" })
-      .attr("name", "content");
+      .attr({ action: "api/comments", method: "POST", name: "content" });
     const $commentFormGroup = $("<div>").addClass("form-group");
     const $formMsg = $("<textarea>")
       .addClass("form-control comment-content")
