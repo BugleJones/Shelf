@@ -28,11 +28,11 @@ $(() => {
     })
       .done(result => {
         $(".search-results").empty();
-        $("<h2>")
+        $("<h3>")
           .text("Results:")
           .appendTo($(".search-results"));
         result.rows.forEach(row => {
-          $("<div>")
+          $("<a>")
             .text(row.title)
             .appendTo($(".search-results"));
         });
