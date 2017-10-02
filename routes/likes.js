@@ -9,7 +9,7 @@ module.exports = knex => {
   const dataMovers = dataMoversFunction(knex);
 
   router.get("/", (request, response) => {
-    dataMovers.umLikes(req.body);
+    dataMovers.sumLikes(req.body);
   });
 
   router.post("/", (request, response) => {

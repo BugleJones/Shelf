@@ -8,7 +8,9 @@ $(() => {
     $(this).toggleClass("clicked-like");
     $("button").blur();
     let resourceID = $(this).closest(".resource-actions").data("resource-id");
-    // $.post("/api/likes", resourceID, function()  {}});
+    $.post("/api/likes", resourceID, function(result)  {
+      console.log(result);
+    });
   });
 
   //Searches database
