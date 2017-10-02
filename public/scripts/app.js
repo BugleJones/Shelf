@@ -42,11 +42,11 @@ $(() => {
       });
   };
 
-  // $(".comments").on("click", "div", function() {
-  //   $(".new-comment").stop();
-  //   $(".new-comment").slideToggle("fast");
-  //   $("textarea").focus();
-  // });
+  $(".comments").on("click", "div", function() {
+    $(".new-comment").stop();
+    $(".new-comment").slideToggle("fast");
+    $("textarea").focus();
+  });
 
   $(".navbar-nav").on("click", "span", function() {
     $(".login").stop();
@@ -67,45 +67,44 @@ $(() => {
     event.preventDefault();
     searchRes($("#query").val());
   });
-//
-//   //Sends a write to likes table in the database
-//   const addLike = () => {
-//     $.ajax({
-//       method: "POST",
-//       url: "/api/likes",
-//       data: {
-//         userID: $('input[name="userID"]').val(),
-//         resourceID: $('.resourceID').val()
-//       }
-//     }).done( (result) => {
-//       console.log(result);
-//     })
-//   }
-//
-//   $('#like').on('submit', (event) => {
-//   event.preventDefault();
-//     addLike();
-//   });
-//
-//   //Deletes from likes table in the database
-//  const unLike = () => {
-//    $.ajax({
-//      method: "POST",
-//      url: "/api/unlike"
-//    }).done( () => {
-//      showLiked();
-//    })
-//  }
-//
-//   //Sends a write to comments table in the database
-//  const addComment = () => {
-//    $.ajax({
-//      method: "POST",
-//      url: "/api/comments",
-//      data: $(".new-comment").serialize(),
-//      dataType: "json"
-//    }).done( (result) => {
-//      console.log(result);
-//    })
-//  }
-});
+
+  //Sends a write to likes table in the database
+  const addLike = () => {
+    $.ajax({
+      method: "POST",
+      url: "/api/likes",
+      data: {
+        userID: $('input[name="userID"]').val(),
+        resourceID: $('.resourceID').val()
+      }
+    }).done( (result) => {
+      console.log(result);
+    })
+  }
+
+  $('#like').on('submit', (event) => {
+  event.preventDefault();
+    addLike();
+  });
+
+  //Deletes from likes table in the database
+ const unLike = () => {
+   $.ajax({
+     method: "POST",
+     url: "/api/unlike"
+   }).done( () => {
+     showLiked();
+   })
+ }
+
+  // //Sends a write to comments table in the database
+  // const addComment = () => {
+  // $.ajax({
+  //   method: "POST",
+  //   url: "/api/comments",
+  //   data: $("#add_comment").serialize()
+  // }).done( (result) => {
+  //   console.log(result);
+  // })
+  // };
+})
