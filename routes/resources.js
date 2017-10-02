@@ -45,16 +45,16 @@ module.exports = knex => {
     let name = request.body.tag.toLowerCase();
 
     dataMovers.createResource(title, url, description, user_id).then((result) => {
-      let resourceId = result;
+      let resource_id = result[0];
+      dataMovers.createTag(name, resource_id).then((otherResult) => {
+        let tagId = otherResult[0];
+      })
     })
 
     //TODO Alter table to disalllow the name value from being null
     // if (!name) {
     //   return null;
     // }
-    dataMovers.createTag(name).then((otherResult) => {
-      let tagId = otherResult;
-    })
 
     .catch((error) => console.log(error));
     response.redirect("/")

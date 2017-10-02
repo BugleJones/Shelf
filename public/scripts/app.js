@@ -96,15 +96,4 @@ $(() => {
      showLiked();
    })
  }
-
-  // //Sends a write to comments table in the database
-  // const addComment = () => {
-  // $.ajax({
-  //   method: "POST",
-  //   url: "/api/comments",
-  //   data: $("#add_comment").serialize()
-  // }).done( (result) => {
-  //   console.log(result);
-  // })
-  // };
 })

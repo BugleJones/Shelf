@@ -90,7 +90,7 @@ $(() => {
       .text(resource.title);
     const $cardUser = $("<p>")
       .addClass("card-user-name")
-      .text(resource.user.username);
+      .text(resource[username]);
 
     $resourceHeader.append($cardTitle).append($cardUser);
 
@@ -246,5 +246,4 @@ $(() => {
     $modalContent.append($modalBody).append($modalFooter);
     return $modal;
   }
-
 });
