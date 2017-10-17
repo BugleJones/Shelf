@@ -1,6 +1,6 @@
 # Shelf
 
-By Spencer Hamilton([BugleJones] (https://github.com/BugleJones)), Scott Hagan(prescottie), Kevin More(kevinmore80) and Jeff Fitzgerald(j33ff)
+By Spencer Hamilton [BugleJones] (https://github.com/BugleJones), Scott Hagan(prescottie), Kevin More(kevinmore80) and Jeff Fitzgerald(j33ff)
 
 ## Features
 
