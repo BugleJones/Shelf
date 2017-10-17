@@ -1,5 +1,7 @@
 # Shelf
 
+By Spencer Hamilton(BugleJones), Scott Hagan(prescottie), Kevin More(kevinmore80) and Jeff Fitzgerald(j33ff)
+
 ## Features
 
 1. Users can view the Library main page to find new and interesting resources
