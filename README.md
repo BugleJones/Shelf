@@ -10,7 +10,11 @@
 5. Resources can be liked
 6. Resources can be commented on from the resource-specific pages
 
+## Captures
 
+![Shelf Library: Home Page](https://github.com/BugleJones/Shelf/blob/master/docs/TheLibrary.png)
+![Add to Your Shelf](https://github.com/BugleJones/Shelf/blob/master/docs/AddToShelf.png)
+![Resource From the Main Library](https://github.com/BugleJones/Shelf/blob/master/docs/ResourcePage.png)
 
 ## Starting Up Shelf
 
